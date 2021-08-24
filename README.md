@@ -107,43 +107,43 @@ The mod adds a few new settings to Among Us (in addition to the role settings):
 The mod adds a few new feature to Among Us:
 - **Scan** Crewmates can use scanner at the same time (prevent scan abuse)
 
-### Task Count Limits per map
-You can configure:
-- Up to 4 common tasks
-- Up to 23 short tasks
-- Up to 15 long tasks
-
-Please note, that if the configured option exceeds the available number of tasks of a map, the tasks will be limited to that number of tasks. \
-Example: If you configure 4 common tasks on Airship crewmates will only receive 2 common tasks, as airship doesn't offer more than 2 common tasks.
-
-| Map | Common Tasks | Short Tasks | Long Tasks |
-|----------|:-------------:|:-------------:|:-------------:|
-| Skeld / Dleks | 2 | 19 | 8
-| Mira HQ | 2 | 13 | 11
-| Polus | 4 | 14 | 15
-| Airship | 2 | 23 | 15
------------------------
-
-# Colors
-![TOR Colors](./Images/TOR_colors.jpg)
-
 # Roles
 
-## Role Assignment
-We are still improving the role assignment system. It's not that intuitive right now, but it's more flexible than the older one
-if you're using it right.
+## Ghost Lord
+![Ghost Lord](./Images/roles/ghost_lord.png)
+### **Team: Impostors**
 
-First you need to choose how many special roles of each kind (Impostor/Neutral/Crewmate) you want in the game.
-The count you set will only be reached, if there are enough Crewmates/Impostors in the game and if enough roles are set to be in the game (i.e. they are set to > 0%). The roles are then being distributed as follows:
-- First all roles that are set to 100% are being assigned to arbitrary players
-- After that each role that has 10%-90% selected adds 1-9 tickets to a ticket pool (there exists a ticket pool for Crewmates, Neutrals and Impostors). Then the roles will be selected randomly from the pools as long it's possible (until the selected number is reached, until there are no more Crewmates/Impostors or until there are no more tickets). If a role is selected from the pool, obviously all the tickets of that role are being removed.
-- The Mafia, Lovers and Mini are being selected independently (without using the ticket system) according to the spawn chance you selected. After that the Crewmate, Neutral and Impostor roles are selected and assigned in a random order.
+The Ghost Lord is an Impostor, that can walk through everyting (including wall, lava ...)
 
-**Example:**\
-Settings: 2 special Crewmate roles, Snitch: 100%, Hacker: 10%, Tracker: 30%\
-Result: Snitch is assigned, then one role out of the pool [Hacker, Tracker, Tracker, Tracker] is being selected\
-Note: Changing the settings to Hacker: 20%, Tracker: 60% would statistically result in the same outcome .
+\
+**NOTE:**
+- If your power finishes inside wall or something else that you can't go normally, you will be stuck inside until you use your power again to escape.
 
+### Game Options
+| Name | Description |
+|----------|:-------------:|
+| Ghost Lord Spawn Chance | -
+| Ghost Lord Cooldown | -
+| Ghost Lord Duration | Time player stay in ghost.
+-----------------------
+
+## Invisible
+![Invisible](./Images/roles/invisible.png)
+### **Team: Impostors**
+
+The Invisible is an Impostor, that can turn invisible to everyone.
+
+\
+**NOTE:**
+- He is able to kill and vent during his skill.
+
+### Game Options
+| Name | Description |
+|----------|:-------------:|
+| Invisible Spawn Chance | -
+| Invisible Cooldown | -
+| Invisible Duration | Time player stay invisible.
+-----------------------
 
 ## Mafia
 ### **Team: Impostors**
@@ -332,40 +332,6 @@ Depending on the options, there'll be an arrow pointing towards the current targ
 | Bounty Hunter Arrow Update Intervall | Sets how often the position is being updated
 -----------------------
 
-## Ghost Lord
-### **Team: Impostors**
-
-The Ghost Lord is an Impostor, that can walk through everyting (including wall, lava ...)
-
-\
-**NOTE:**
-- If your power finishes inside wall or something else that you can't go normally, you will be stuck inside until you use your power again to escape.
-
-### Game Options
-| Name | Description |
-|----------|:-------------:|
-| Ghost Lord Spawn Chance | -
-| Ghost Lord Cooldown | -
-| Ghost Lord Duration | Time player stay in ghost.
------------------------
-
-## Invisible
-### **Team: Impostors**
-
-The Invisible is an Impostor, that can turn invisible to everyone.
-
-\
-**NOTE:**
-- He is able to kill and vent during his skill.
-
-### Game Options
-| Name | Description |
-|----------|:-------------:|
-| Invisible Spawn Chance | -
-| Invisible Cooldown | -
-| Invisible Duration | Time player stay invisible.
------------------------
-
 ## Guesser
 ### **Team: Crewmates or Impostors**
 The Guesser can be a Crewmate or an Impostor (depending on the settings).\
@@ -447,6 +413,7 @@ The Jester does not have any tasks. They win the game as a solo, if they get vot
 -----------------------
 
 ## Arsonist
+![Arsonist](./Images/roles/arsonist.png)
 ### **Team: Neutral**
 The Arsonist does not have any tasks, he has to win the game as a solo.\
 The Arsonist can douse other players by pressing the douse button and remaining next to the player for a few seconds.\
@@ -459,6 +426,22 @@ After dousing everyone alive the Arsonist can ignite all the players which resul
 | Arsonist Spawn Chance | -
 | Arsonist Countdown | -
 | Arsonist Douse Duration | The time it takes to douse a player
+-----------------------
+
+## Logger
+![Logger](./Images/roles/time_master.png)
+### **Team: Crewmates**
+Logger can place 3 rigged garlic that will log player walking on it (like sensor on mira HQ). player name for each garlic are written in chat (only for logger) at the beginning of next meeting.
+
+**NOTE:**
+- invicible are not register during his skill.
+- during communication sabotage, people are register as "anonymous".
+- during morphing skill, morphing target will be register instead of morphing himself.
+
+### Game Options
+| Name | Description
+|----------|:-------------:|
+| Logger Spawn Chance | -
 -----------------------
 
 ## Seer
@@ -494,6 +477,7 @@ you can double click on the tasks instead.
 -----------------------
 
 ## Detective
+![Detective](./Images/roles/detective.png)
 ### **Team: Crewmates**
 The Detective can see footprints that other players leave behind.
 The Detective's other feature shows when they report a corpse: they recieve clues about the killer's identity. The type of information they get is based on the time it took them to find the corpse.
@@ -587,6 +571,7 @@ The Mayor can always use his meeting, even if the maximum number of meetings was
 -----------------------
 
 ## Hacker
+![Hacker](./Images/roles/hacker.png)
 ### **Team: Crewmates**
 If the Hacker activates the "Hacker mode", the Hacker gets more information than others from the admin table and vitals for a set duration.\
 Otherwise he sees the same information as everyone else.
@@ -631,6 +616,7 @@ can only use them, if the previous player did not used them before)
 -----------------------
 
 ## Time Master
+![Time Master](./Images/roles/time_master.png)
 ### **Team: Crewmates**
 The Time Master has a time shield which he can activate. The time shield remains active for a configurable amount of time.\
 If a player trys to kill the Time Master while the time shield is active, the kill won't happen and the
@@ -695,20 +681,6 @@ When the Snitch has one task left (configurable) the Snitch will be revealed to 
 | Task Count Where Impostors See Snitch | -
 -----------------------
 
-## Logger
-### **Team: Crewmates**
-Logger can place 3 rigged garlic that will log player walking on it (like sensor on mira HQ). player name for each garlic are written in chat (only for logger) at the beginning of next meeting.
-
-**NOTE:**
-- invicible are not register during his skill.
-- during communication sabotage, people are register as "anonymous".
-- during morphing skill, morphing target will be register instead of morphing himself.
-
-### Game Options
-| Name | Description
-|----------|:-------------:|
-| Logger Spawn Chance | -
------------------------
 
 ## Bait
 ### **Team: Crewmates**
@@ -836,6 +808,41 @@ The vents will be sealed after the next meeting, players can't enter or exit sea
 | Number Of Screws Per Cam | The number of screws it takes to place a camera
 | Number Of Screws Per Vent | The number of screws it takes to seal a vent
 -----------------------
+
+## Role Assignment
+We are still improving the role assignment system. It's not that intuitive right now, but it's more flexible than the older one
+if you're using it right.
+
+First you need to choose how many special roles of each kind (Impostor/Neutral/Crewmate) you want in the game.
+The count you set will only be reached, if there are enough Crewmates/Impostors in the game and if enough roles are set to be in the game (i.e. they are set to > 0%). The roles are then being distributed as follows:
+- First all roles that are set to 100% are being assigned to arbitrary players
+- After that each role that has 10%-90% selected adds 1-9 tickets to a ticket pool (there exists a ticket pool for Crewmates, Neutrals and Impostors). Then the roles will be selected randomly from the pools as long it's possible (until the selected number is reached, until there are no more Crewmates/Impostors or until there are no more tickets). If a role is selected from the pool, obviously all the tickets of that role are being removed.
+- The Mafia, Lovers and Mini are being selected independently (without using the ticket system) according to the spawn chance you selected. After that the Crewmate, Neutral and Impostor roles are selected and assigned in a random order.
+
+**Example:**\
+Settings: 2 special Crewmate roles, Snitch: 100%, Hacker: 10%, Tracker: 30%\
+Result: Snitch is assigned, then one role out of the pool [Hacker, Tracker, Tracker, Tracker] is being selected\
+Note: Changing the settings to Hacker: 20%, Tracker: 60% would statistically result in the same outcome .
+
+# Task Count Limits per map
+You can configure:
+- Up to 4 common tasks
+- Up to 23 short tasks
+- Up to 15 long tasks
+
+Please note, that if the configured option exceeds the available number of tasks of a map, the tasks will be limited to that number of tasks. \
+Example: If you configure 4 common tasks on Airship crewmates will only receive 2 common tasks, as airship doesn't offer more than 2 common tasks.
+
+| Map | Common Tasks | Short Tasks | Long Tasks |
+|----------|:-------------:|:-------------:|:-------------:|
+| Skeld / Dleks | 2 | 19 | 8
+| Mira HQ | 2 | 13 | 11
+| Polus | 4 | 14 | 15
+| Airship | 2 | 23 | 15
+-----------------------
+
+# Colors
+![TOR Colors](./Images/TOR_colors.jpg)
 
 # Custom Servers and 10+ Players
 We always recommend you to play on custom servers rather than on the official ones. If you want to play with more than 10 players in one lobby, you're required to use a custom server. Credits for the original implementation that allowed 10+ player lobbies go to the creaters of the [CrowdedMod](https://github.com/CrowdedMods/CrowdedMod).
