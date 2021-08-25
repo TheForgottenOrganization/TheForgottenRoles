@@ -163,6 +163,7 @@ The Janitor is an Impostor who cannot kill nor sabotage, but they can hide dead 
 -----------------------
 
 ## Morphling
+![Morphling](./Images/roles/morphling.png)
 ### **Team: Impostors**
 The Morphling is an Impostor which can additionally scan the appearance of a player. After an arbitrary time they can take on that appearance for 10s.
 \
@@ -225,6 +226,7 @@ If a victim is near a garlic, the "Bite Button" turns into the default "Kill But
 -----------------------
 
 ## Eraser
+![Eraser](./Images/roles/eraser.png)
 ### **Team: Impostors**
 The Eraser is an Impostor that can erase the role of every player.\
 The targeted players will lose their role after the meeting right before a player is exiled.\
@@ -249,6 +251,7 @@ ex Lover surviving as the partnership was erased before. Also a Jester win would
 -----------------------
 
 ## Trickster
+![Trickster](./Images/roles/trickster.png)
 ### **Team: Impostors**
 The Trickster is an Impostor that can place 3 jack-in-the-boxes that are invisible at first to other players. \
 If the Trickster has placed all of his boxes they will be converted into a vent network usable only by the Trickster himself and the Engineer, but the boxes are revealed to the others. \
@@ -268,6 +271,7 @@ boxes dosn't have animation.
 -----------------------
 
 ## Cleaner
+![Cleaner](./Images/roles/cleaner.png)
 ### **Team: Impostors**
 The Cleaner is an Impostor who has the ability to clean up dead bodies. \
 
@@ -306,6 +310,7 @@ The Warlock can still perform normal kills, but the two buttons share the same c
 
 
 ## Bounty Hunter
+![Bounty Hunter](./Images/roles/bounty_hunter.png)
 ### **Team: Impostors**
 \
 Created by  [Mallöris](https://github.com/Mallaris)\
@@ -384,6 +389,7 @@ If there's an team Impostor/Jackal Lover in the game, the tasks of a Crewmate Lo
 
 
 ## Sheriff
+![Sheriff](./Images/roles/sheriff.png)
 ### **Team: Crewmates**
 The Sheriff has the ability to kill Impostors.
 If they try to kill a Crewmate, they die instead.
@@ -401,6 +407,7 @@ If they try to kill a Crewmate, they die instead.
 -----------------------
 
 ## Jester
+![Jester](./Images/roles/jester.png)
 ### **Team: Neutral**
 The Jester does not have any tasks. They win the game as a solo, if they get voted out during a meeting.
 
@@ -445,6 +452,7 @@ Logger can place 3 rigged garlic that will log player walking on it (like sensor
 -----------------------
 
 ## Seer
+![Seer](./Images/roles/seer.png)
 ### **Team: Crewmates**
 The Seer has two abilities (one can activate one of them or both in the options).
 The Seer sees the souls of players that died a round earlier, the souls slowy fade away.
@@ -460,6 +468,7 @@ The Seer gets a blue flash on his screen, if a player dies somewhere on the map.
 -----------------------
 
 ## Engineer
+![Engineer](./Images/roles/engineer.png)
 ### **Team: Crewmates**
 The Engineer (if alive) can fix one sabotage per game from anywhere on the map.\
 The Engineer can use vents. If the Engineer is inside a vent, the Impostors will see a blue outline
@@ -499,6 +508,7 @@ The Detective's other feature shows when they report a corpse: they recieve clue
 -----------------------
 
 ## Lighter
+![Lighter](./Images/roles/lighter.png)
 ### **Team: Crewmates**
 The Lighter can turn on his Lighter every now and then, which increases his vision by a costumizable amount.
 
@@ -560,6 +570,7 @@ The Medic's other feature shows when they report a corpse: they will see how lon
 -----------------------
 
 ## Mayor
+![Mayor](./Images/roles/mayor.png)
 ### **Team: Crewmates**
 The Mayor leades the Crewmates by having a vote that counts twice.\
 The Mayor can always use his meeting, even if the maximum number of meetings was reached.
@@ -657,6 +668,7 @@ and can't fix lights and comms.
 -----------------------
 
 ## Tracker
+![Tracker](./Images/roles/tracker.png)
 ### **Team: Crewmates**
 The Tracker can select one player in a game and tracks this player for the rest of the game.
 An arrow points to the last tracked position of the player.
@@ -670,6 +682,7 @@ The arrow updates it's position every few seconds (configurable).
 -----------------------
 
 ## Snitch
+![Snitch](./Images/roles/snitch.png)
 ### **Team: Crewmates**
 When the Snitch finishes all the tasks, arrows will appear (only visible to the Snitch) that point to the Impostors.
 When the Snitch has one task left (configurable) the Snitch will be revealed to the Impostors, also with an arrow.
@@ -683,6 +696,7 @@ When the Snitch has one task left (configurable) the Snitch will be revealed to 
 
 
 ## Bait
+![Bait](./Images/roles/bait.png)
 ### **Team: Crewmates**
 
 Created by  [Mallöris](https://github.com/Mallaris)\
