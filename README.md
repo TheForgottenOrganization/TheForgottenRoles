@@ -163,7 +163,7 @@ The Janitor is an Impostor who cannot kill nor sabotage, but they can hide dead 
 -----------------------
 
 ## Morphling
-![Morphling](./Images/roles/morphling.png)
+![Morphling](./Images/roles/morphing.png)
 ### **Team: Impostors**
 The Morphling is an Impostor which can additionally scan the appearance of a player. After an arbitrary time they can take on that appearance for 10s.
 \
@@ -184,6 +184,7 @@ The Morphling is an Impostor which can additionally scan the appearance of a pla
 -----------------------
 
 ## Camouflager
+![Camouflager](./Images/roles/camouflager.png)
 ### **Team: Impostors**
 The Camouflager is an Impostor which can additionally activate a camouflage mode.
 The camouflage mode lasts for 10s and while it is active, all player names/pets/hats
@@ -288,6 +289,7 @@ The Cleaner is an Impostor who has the ability to clean up dead bodies. \
 
 
 ## Warlock
+![Warlock](./Images/roles/warlock.png)
 ### **Team: Impostors**
 The Warlock is an Impostor, that can curse another player (the cursed player doesn't get notified).\
 If the cursed person stands next to another player, the Warlock is able to kill that player (no matter how far away he is).\
@@ -338,6 +340,7 @@ Depending on the options, there'll be an arrow pointing towards the current targ
 -----------------------
 
 ## Guesser
+![Guesser](./Images/roles/guesser.png)
 ### **Team: Crewmates or Impostors**
 The Guesser can be a Crewmate or an Impostor (depending on the settings).\
 The Guesser can shoot a player during the meeting, by guessing its role. If the guess is wrong, the Guesser dies instead.\
@@ -362,6 +365,7 @@ You can only shoot during the voting time.
 -----------------------
 
 ## Lovers
+![Lovers](./Images/roles/lovers.png)
 ### **Team: Lovers (and secondary team)**
 There are always two Lovers which are linked together.\
 Their primary goal is it to stay alive together until the end of the game.\
@@ -523,6 +527,7 @@ The Lighter can turn on his Lighter every now and then, which increases his visi
 -----------------------
 
 ## Mini
+![Mini](./Images/roles/mini.png)
 ### **Team: Crewmates or Impostors**
 The Mini can be a Crewmate (67% chance) or an Impostor (33% chance).\
 The Mini's character is smaller and hence visible to everyone in the game.\
@@ -547,6 +552,7 @@ The Mini cannot be killed until it turns 18 years old, however it can be voted o
 -----------------------
 
 ## Medic
+![Medic](./Images/roles/medic.png)
 ### **Team: Crewmates**
 The Medic can shield (highlighted by an outline around the player) one player per game, which makes the player unkillable.\
 **Vitals**: The Medic can see how long dead players have been dead for.\
@@ -604,6 +610,7 @@ Otherwise he sees the same information as everyone else.
 
 
 ## Shifter
+![Shifter](./Images/roles/shifter.png)
 ### **Team: Crewmates**
 The Shifter can take over the role of another Crewmate, the other player will transform into a Crewmate.\
 The Shift will always be performed at the end of the next meeting right before a player is exiled. The target needs to be chosen during the round.\
@@ -653,6 +660,7 @@ The Time Master won't be affected by the rewind.\
 -----------------------
 
 ## Swapper
+![Swapper](./Images/roles/swapper.png)
 ### **Team: Crewmates**
 During meetings the Swapper can exchange votes that two people get (i.e. all votes
 that player A got will be given to player B and vice versa).\
