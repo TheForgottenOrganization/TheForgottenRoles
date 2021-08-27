@@ -146,6 +146,7 @@ The Invisible is an Impostor, that can turn invisible to everyone.
 -----------------------
 
 ## Mafia
+![Mafia](./Images/roles/mafia.png)
 ### **Team: Impostors**
 The Mafia are a group of three Impostors.\
 The Godfather works like a normal Impostor.\
@@ -725,6 +726,7 @@ an outline or all vents do).
 | Bait Report Delay | -
 
 ## Jackal
+![Jackal](./Images/roles/jackal.png)
 ### **Team: Jackal**
 The Jackal is part of an extra team, that tries to eliminate all the other players.\
 The Jackal has no tasks and can kill Impostors, Crewmates and Neutrals.\
@@ -771,6 +773,7 @@ If both Impostors and Jackals are in the game the game continues even if all Cre
 -----------------------
 
 ## Sidekick
+![Sidekick](./Images/roles/sidekick.png)
 ### **Team: Jackal**
 Gets assigned to a player during the game by the "Create Sidekick Action" of the Jackal and joins the Jackal in his quest to eliminate all other players.\
 Upon the death of the Jackal (depending on the options), he might get promoted to Jackal himself and potentially even assign a Sidekick of his own.
@@ -790,6 +793,7 @@ Upon the death of the Jackal (depending on the options), he might get promoted t
 -----------------------
 
 ## Spy
+![Spy](./Images/roles/spy.png)
 ### **Team: Crewmates**
 The Spy is a Crewmate, which has no special abilities.\
 The Spy looks like an additional Impostor to the Impostors, they can't tell the difference.\
@@ -809,6 +813,7 @@ You can set whether the Sheriff can kill the Spy or not (in order to keep the li
 -----------------------
 
 ## Security Guard
+![SecurityGuard](./Images/roles/security_guard.png)
 ### **Team: Crewmates**
 The Security Guard is a Crewmate that has a certain amount of screws that he can use for either sealing vents or for placing new cameras.\
 Placing a new camera and sealing vents takes a configurable amount of screws. The total number of screws that a Security Guard has can also be configured.\
