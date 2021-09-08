@@ -145,6 +145,24 @@ The Invisible is an Impostor, that can turn invisible to everyone.
 | Invisible Duration | Time player stay invisible.
 -----------------------
 
+## Undertaker
+![undertaker]
+### **Team: Impostors**
+
+The Undertaker is an Impostor that can drag dead body.
+
+\
+**NOTE:**
+- dont drop body at the extreme limit of the map otherwhise people wont be able to report it (know bug that append sometime).
+
+### Game Options
+| Name | Description |
+|----------|:-------------:|
+| Undertaker Spawn Chance | -
+| Undertaker Cooldown | -
+| Draging delai after kill | you realy want a description ?
+-----------------------
+
 ## Mafia
 ![Mafia](./Images/roles/mafia.png)
 ### **Team: Impostors**
