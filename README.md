@@ -146,7 +146,6 @@ The Invisible is an Impostor, that can turn invisible to everyone.
 -----------------------
 
 ## Undertaker
-![undertaker]
 ### **Team: Impostors**
 
 The Undertaker is an Impostor that can drag dead body.
