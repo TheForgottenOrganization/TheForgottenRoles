@@ -27,9 +27,9 @@ Even more roles are coming soon :)
 | [Trickster](#trickster) | [Sheriff](#sheriff) |  |  |
 | [Vampire](#vampire) | [Shifter](#shifter) |  |  |
 | [Warlock](#warlock) | [Snitch](#snitch) |  |  |
-| [Invisible](#Invisible)  | [Spy](#spy) |  |  |
-| [Undertaker](#Undertaker) | [Swapper](#swapper) |  |  |
-| [Ghost Lord](#GhostLord) | [Time Master](#time-master) |  |  |
+| [Invisible](#invisible)  | [Spy](#spy) |  |  |
+| [Undertaker](#undertaker) | [Swapper](#swapper) |  |  |
+| [Ghost Lord](#ghost-lord) | [Time Master](#time-master) |  |  |
 |  |  [Tracker](#tracker) |  |  |
 |  |  [Logger](#logger) |  |  |
 |  |  [Bait](#bait) |  |
@@ -110,7 +110,7 @@ The mod adds a few new feature to Among Us:
 # Roles
 
 ## Ghost Lord
-![Ghost Lord](./Images/roles/ghost_lord.png)
+![ghost-lord](./Images/roles/ghost_lord.png)
 ### **Team: Impostors**
 
 The Ghost Lord is an Impostor, that can walk through everyting (including wall, lava ...)
@@ -128,7 +128,7 @@ The Ghost Lord is an Impostor, that can walk through everyting (including wall, 
 -----------------------
 
 ## Invisible
-![Invisible](./Images/roles/invisible.png)
+![invisible](./Images/roles/invisible.png)
 ### **Team: Impostors**
 
 The Invisible is an Impostor, that can turn invisible to everyone.
