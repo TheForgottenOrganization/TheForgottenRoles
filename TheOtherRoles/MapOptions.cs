@@ -33,7 +33,7 @@ public static void clearAndReloadMapOptions() {
             blockSkippingInEmergencyMeetings = CustomOptionHolder.blockSkippingInEmergencyMeetings.getBool();
             noVoteIsSelfVote = CustomOptionHolder.noVoteIsSelfVote.getBool();
             hidePlayerNames = CustomOptionHolder.hidePlayerNames.getBool();
-            activateBetterPolus = CustomOptionHolder.activateBetterPolus.getBool();
+            activateBetterPolus = TheOtherRolesPlugin.ActivateBetterPolus.Value;
             ghostsSeeRoles = TheOtherRolesPlugin.GhostsSeeRoles.Value;
             ghostsSeeTasks = TheOtherRolesPlugin.GhostsSeeTasks.Value;
             ghostsSeeVotes = TheOtherRolesPlugin.GhostsSeeVotes.Value;
