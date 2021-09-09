@@ -39,7 +39,7 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 # Releases
 | Among Us - Version| Mod Version | Link |
 |----------|-------------|-----------------|
-| **2021.6.30s**| v2.7.3.8| [Download](https://github.com/TheForgottenOrganization/TheForgottenRoles/releases/tag/2.8.1.4)
+| **2021.6.30s**| v2.8.1.4| [Download](https://github.com/TheForgottenOrganization/TheForgottenRoles/releases/tag/2.8.1.4)
 
 # Changelog
 <details>
