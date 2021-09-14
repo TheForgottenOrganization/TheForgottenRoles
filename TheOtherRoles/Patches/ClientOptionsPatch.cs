@@ -16,6 +16,7 @@ namespace TheOtherRoles.Patches {
         private static ToggleButtonBehaviour ghostsSeeRolesButton;
         private static ToggleButtonBehaviour ghostsSeeVotesButton;
         private static ToggleButtonBehaviour showRoleSummaryButton;
+        private static ToggleButtonBehaviour activateBetterPolusButton;
 
         public static float xOffset = 1.75f;
         public static float yOffset = -0.5f;
@@ -96,6 +97,18 @@ namespace TheOtherRoles.Patches {
                     TheOtherRolesPlugin.ShowRoleSummary.Value = !TheOtherRolesPlugin.ShowRoleSummary.Value;
                     MapOptions.showRoleSummary = TheOtherRolesPlugin.ShowRoleSummary.Value; 
                     updateToggle(showRoleSummaryButton, "Role Summary: ", TheOtherRolesPlugin.ShowRoleSummary.Value);
+                }
+            }
+
+            if ((activateBetterPolusButton == null || activateBetterPolusButton.gameObject == null))
+            {
+                activateBetterPolusButton = createCustomToggle("Activate Better Polus: ", TheOtherRolesPlugin.ActivateBetterPolus.Value, new Vector2(xOffset, yOffset), (UnityEngine.Events.UnityAction)showRoleSummaryToggle, __instance);
+
+                void showRoleSummaryToggle()
+                {
+                    TheOtherRolesPlugin.ActivateBetterPolus.Value = !TheOtherRolesPlugin.ActivateBetterPolus.Value;
+                    MapOptions.activateBetterPolus = TheOtherRolesPlugin.ActivateBetterPolus.Value;
+                    updateToggle(activateBetterPolusButton, "Activate Better Polus: ", TheOtherRolesPlugin.ActivateBetterPolus.Value);
                 }
             }
         }
