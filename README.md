@@ -30,7 +30,7 @@ Even more roles are coming soon :)
 | [Invisible](#invisible)  | [Spy](#spy) |  |  |
 | [Undertaker](#undertaker) | [Swapper](#swapper) |  |  |
 | [Ghost Lord](#ghost-lord) | [Time Master](#time-master) |  |  |
-|  |  [Tracker](#tracker) |  |  |
+| [Mr Freeze](#mr-freeze) |  [Tracker](#tracker) |  |  |
 |  |  [Logger](#logger) |  |  |
 |  |  [Bait](#bait) |  |
 
@@ -108,6 +108,24 @@ The mod adds a few new feature to Among Us:
 - **Scan** Crewmates can use scanner at the same time (prevent scan abuse)
 
 # Roles
+
+## Mr Freeze
+![mr-freeze](./Images/roles/freezer.png)
+### **Team: Impostors**
+The Mr Freeze is an Impostor which can additionally activate a freeze mode.
+The freeze mode lasts for X seconds and while it is active, all player can't move expect him
+\
+**NOTE:**
+- The Engineer and others imposteur can't still vent if they are inside a vent.
+- The freeze mode don't cancel task or admin view.
+
+### Game Options
+| Name | Description |
+|----------|:-------------:|
+| Mr Freeze Spawn Chance | -
+| Mr Freeze Cooldown | -
+| Freeze Duration | Time players stay freezed
+-----------------------
 
 ## Ghost Lord
 ![ghost-lord](./Images/roles/ghost_lord.png)
