@@ -75,6 +75,7 @@ namespace TheOtherRoles.Patches {
             impSettings.Add((byte)RoleId.Warlock, CustomOptionHolder.warlockSpawnRate.getSelection());
             impSettings.Add((byte)RoleId.BountyHunter, CustomOptionHolder.bountyHunterSpawnRate.getSelection());
             impSettings.Add((byte)RoleId.GhostLord, CustomOptionHolder.ghostLordSpawnRate.getSelection());
+            impSettings.Add((byte)RoleId.MrFreeze, CustomOptionHolder.mrFreezeSpawnRate.getSelection());
 
             neutralSettings.Add((byte)RoleId.Jester, CustomOptionHolder.jesterSpawnRate.getSelection());
             neutralSettings.Add((byte)RoleId.Arsonist, CustomOptionHolder.arsonistSpawnRate.getSelection());

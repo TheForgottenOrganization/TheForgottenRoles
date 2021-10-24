@@ -33,6 +33,7 @@ namespace TheOtherRoles
         public static RoleInfo morphling = new RoleInfo("Morphling", Morphling.color, "Change your look to not get caught", "Change your look", RoleId.Morphling);
         public static RoleInfo invisible = new RoleInfo("Invisible", Invisible.color, "I'm here, in the shadow...", "I'm here, in the shadow...", RoleId.Invisible);
         public static RoleInfo camouflager = new RoleInfo("Camouflager", Camouflager.color, "Camouflage and kill the Crewmates", "Hide among others", RoleId.Camouflager);
+        public static RoleInfo mrFreeze = new RoleInfo("Mr Freeze", MrFreeze.color, "Freeze everyone and kill the Crewmates", "Freeze everyone", RoleId.MrFreeze);
         public static RoleInfo vampire = new RoleInfo("Vampire", Vampire.color, "Kill the Crewmates with your bites", "Bite your enemies", RoleId.Vampire);
         public static RoleInfo eraser = new RoleInfo("Eraser", Eraser.color, "Kill the Crewmates and erase their roles", "Erase the roles of your enemies", RoleId.Eraser);
         public static RoleInfo trickster = new RoleInfo("Trickster", Trickster.color, "Use your jack-in-the-boxes to surprise others", "Surprise your enemies", RoleId.Trickster);
@@ -108,7 +109,8 @@ namespace TheOtherRoles
             securityGuard,
             bountyHunter,
             bait,
-            ghostLord
+            ghostLord,
+            mrFreeze
         };
 
         public static List<RoleInfo> getRoleInfoForPlayer(PlayerControl p) {
@@ -127,6 +129,7 @@ namespace TheOtherRoles
             if (p == Morphling.morphling) infos.Add(morphling);
             if (p == Invisible.invisible) infos.Add(invisible);
             if (p == Camouflager.camouflager) infos.Add(camouflager);
+            if (p == MrFreeze.mrFreeze) infos.Add(mrFreeze);
             if (p == Vampire.vampire) infos.Add(vampire);
             if (p == Eraser.eraser) infos.Add(eraser);
             if (p == Trickster.trickster) infos.Add(trickster);

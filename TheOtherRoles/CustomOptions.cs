@@ -37,6 +37,10 @@ namespace TheOtherRoles {
         public static CustomOption camouflagerCooldown;
         public static CustomOption camouflagerDuration;
 
+        public static CustomOption mrFreezeSpawnRate;
+        public static CustomOption mrFreezeCooldown;
+        public static CustomOption mrFreezeDuration;
+
         public static CustomOption vampireSpawnRate;
         public static CustomOption vampireKillDelay;
         public static CustomOption vampireCooldown;
@@ -229,6 +233,10 @@ namespace TheOtherRoles {
             camouflagerSpawnRate = CustomOption.Create(30, cs(Camouflager.color, "Camouflager"), rates, null, true);
             camouflagerCooldown = CustomOption.Create(31, "Camouflager Cooldown", 27.5f, 10f, 60f, 2.5f, camouflagerSpawnRate);
             camouflagerDuration = CustomOption.Create(32, "Camo Duration", 10f, 1f, 20f, 0.5f, camouflagerSpawnRate);
+
+            mrFreezeSpawnRate = CustomOption.Create(380, cs(MrFreeze.color, "Mr Freeze"), rates, null, true);
+            mrFreezeCooldown = CustomOption.Create(381, "Mr Freeze Cooldown", 27.5f, 10f, 60f, 2.5f, mrFreezeSpawnRate);
+            mrFreezeDuration = CustomOption.Create(382, "Freeze Duration", 5f, 1f, 20f, 0.5f, mrFreezeSpawnRate);
 
             vampireSpawnRate = CustomOption.Create(40, cs(Vampire.color, "Vampire"), rates, null, true);
             vampireKillDelay = CustomOption.Create(41, "Vampire Kill Delay", 2f, 1f, 20f, 1f, vampireSpawnRate);

@@ -25,6 +25,7 @@ namespace TheOtherRoles.Patches
                     playerPhysics.body.velocity /= 2;
             }
         }
+
         static void removeGhostLordCollision(PlayerPhysics playerPhysics)
         {
             if (GhostLord.ghostLord == null || GhostLord.ghostLord != PlayerControl.LocalPlayer) return;

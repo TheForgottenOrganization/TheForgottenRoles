@@ -183,8 +183,39 @@ namespace TheOtherRoles.Patches {
             Hacker.hackerTimer -= Time.deltaTime;
             Lighter.lighterTimer -= Time.deltaTime;
             Trickster.lightsOutTimer -= Time.deltaTime;
-            
+            MrFreeze.mrFreezeTimer -= Time.deltaTime;
         }
+
+        static void mrFreezeFreezeAndUnfreeze()
+        {            
+            if (MrFreeze.mrFreeze != null)
+            {
+                if(MrFreeze.originalSpeed == null)
+                {
+                    MrFreeze.originalSpeed = MrFreeze.mrFreeze.MyPhysics.Speed;
+                }
+
+                if (MrFreeze.mrFreezeTimer > 0)
+                {
+                    foreach (PlayerControl p in PlayerControl.AllPlayerControls)
+                    {
+                        if(p != MrFreeze.mrFreeze)
+                        {
+                            p.MyPhysics.Speed = 0;
+                        }                        
+                    }
+                }
+                else
+                {
+                    foreach (PlayerControl p in PlayerControl.AllPlayerControls)
+                    {
+                        p.MyPhysics.Speed = MrFreeze.originalSpeed.Value;
+                    }
+                }
+            }
+        }        
+                
+              
 
         // manage timer for camouflager, morphing and ghost lord
         static void camouflageAndMorphActions() {
@@ -331,6 +362,9 @@ namespace TheOtherRoles.Patches {
             timerUpdate();
             // Camouflager and Morphling
             camouflageAndMorphActions();
+
+            // mrFreeze
+            mrFreezeFreezeAndUnfreeze();
             // Mini
             miniUpdate();
         }

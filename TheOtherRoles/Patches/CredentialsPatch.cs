@@ -14,12 +14,12 @@ $@"<size=130%><color=#ff351f>TheOtherRoles</color></size> v{TheOtherRolesPlugin.
 <size=80%>Modded by <color=#FCCE03FF>Eisbison</color>,
 <color=#FCCE03FF>Thunderstorm584</color>, <color=#FCCE03FF>EndOfFile</color>,
 <color=#FCCE03FF>oPyRuSo</color> & <color=#FCCE03FF>Mamax49</color>
-Button design by <color=#FCCE03FF>Bavari</color> & <color=#FCCE03FF>oPyRuSo</color></size>";
+Button design by <color=#FCCE03FF>Bavari</color> & <color=#FCCE03FF>oPyRuSo</color> & <color=#471F5F>Keilwig</color></size>";
 
     public static string mainMenuCredentials = 
 $@"Modded by <color=#FCCE03FF>Eisbison</color>, <color=#FCCE03FF>Thunderstorm584</color>, <color=#FCCE03FF>EndOfFile</color>,
 <color=#FCCE03FF>oPyRuSo</color> & <color=#FCCE03FF>Mamax49</color>
-Design by <color=#FCCE03FF>Bavari</color>";
+Design by <color=#FCCE03FF>Bavari</color> & <color=#471F5F>Keilwig</color>";
 
         [HarmonyPatch(typeof(VersionShower), nameof(VersionShower.Start))]
         private static class VersionShowerPatch
