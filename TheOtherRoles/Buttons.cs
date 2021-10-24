@@ -19,6 +19,7 @@ namespace TheOtherRoles
         private static CustomButton morphlingButton;
         private static CustomButton invisibleButton;
         private static CustomButton camouflagerButton;
+        private static CustomButton mrFreezeButton;
         private static CustomButton hackerButton;
         private static CustomButton trackerButton;
         private static CustomButton vampireKillButton;
@@ -50,6 +51,7 @@ namespace TheOtherRoles
             morphlingButton.MaxTimer = Morphling.cooldown;
             invisibleButton.MaxTimer = Invisible.cooldown;
             camouflagerButton.MaxTimer = Camouflager.cooldown;
+            mrFreezeButton.MaxTimer = MrFreeze.cooldown;
             hackerButton.MaxTimer = Hacker.cooldown;
             vampireKillButton.MaxTimer = Vampire.cooldown;
             trackerButton.MaxTimer = 0f;
@@ -73,6 +75,7 @@ namespace TheOtherRoles
             vampireKillButton.EffectDuration = Vampire.delay;
             lighterButton.EffectDuration = Lighter.duration; 
             camouflagerButton.EffectDuration = Camouflager.duration;
+            mrFreezeButton.EffectDuration = MrFreeze.duration;
             morphlingButton.EffectDuration = Morphling.duration;
             invisibleButton.EffectDuration = Invisible.duration;
             lightsOutButton.EffectDuration = Trickster.lightsOutDuration;
@@ -375,6 +378,29 @@ namespace TheOtherRoles
                 true,
                 Camouflager.duration,
                 () => { camouflagerButton.Timer = camouflagerButton.MaxTimer; }
+            );
+
+            // MrFreeze freeze
+            mrFreezeButton = new CustomButton(
+                () => {
+                    MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.MrFreezeFreeze, Hazel.SendOption.Reliable, -1);
+                    AmongUsClient.Instance.FinishRpcImmediately(writer);
+                    RPCProcedure.mrFreezeFreeze();
+                },
+                () => { return MrFreeze.mrFreeze != null && MrFreeze.mrFreeze == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead; },
+                () => { return PlayerControl.LocalPlayer.CanMove; },
+                () => {
+                    mrFreezeButton.Timer = mrFreezeButton.MaxTimer;
+                    mrFreezeButton.isEffectActive = false;
+                    mrFreezeButton.killButtonManager.TimerText.color = Palette.EnabledColor;
+                },
+                MrFreeze.getButtonSprite(),
+                 new Vector3(-1.3f, 1.3f, 0f),
+                __instance,
+                KeyCode.F,
+                true,
+                MrFreeze.duration,
+                () => { mrFreezeButton.Timer = mrFreezeButton.MaxTimer; }
             );
 
             // Hacker button

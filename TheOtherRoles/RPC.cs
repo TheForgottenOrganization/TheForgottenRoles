@@ -32,6 +32,7 @@ namespace TheOtherRoles
         Morphling,
         Invisible,
         Camouflager,
+        MrFreeze,
         Hacker,
         Mini,
         Tracker,
@@ -86,6 +87,7 @@ namespace TheOtherRoles
         MorphlingMorph,
         InvisibleInvis,
         CamouflagerCamouflage,
+        MrFreezeFreeze,
         TrackerUsedTracker,
         VampireSetBitten,
         VampireTryKill,
@@ -198,6 +200,9 @@ namespace TheOtherRoles
                         break;
                     case RoleId.Camouflager:
                         Camouflager.camouflager = player;
+                        break;
+                    case RoleId.MrFreeze:
+                        MrFreeze.mrFreeze = player;
                         break;
                     case RoleId.Hacker:
                         Hacker.hacker = player;
@@ -504,6 +509,13 @@ namespace TheOtherRoles
             Camouflager.camouflageTimer = Camouflager.duration;
         }
 
+        public static void mrFreezeFreeze()
+        {
+            if (MrFreeze.mrFreeze == null) return;
+
+            MrFreeze.mrFreezeTimer = MrFreeze.duration;
+        }
+
         public static void placeLogTrap(byte[] buff)
         {
             Vector3 position = Vector3.zero;
@@ -632,6 +644,7 @@ namespace TheOtherRoles
             if (player == Undertaker.undertaker) Undertaker.clearAndReload();
             if (player == Warlock.warlock) Warlock.clearAndReload();
             if (player == GhostLord.ghostLord) GhostLord.clearAndReload();
+            if (player == MrFreeze.mrFreeze) MrFreeze.clearAndReload();
 
             // Other roles
             if (player == Jester.jester) Jester.clearAndReload();
@@ -882,6 +895,9 @@ namespace TheOtherRoles
                     break;
                 case (byte)CustomRPC.CamouflagerCamouflage:
                     RPCProcedure.camouflagerCamouflage();
+                    break;
+                case (byte)CustomRPC.MrFreezeFreeze:
+                    RPCProcedure.mrFreezeFreeze();
                     break;
                 case (byte)CustomRPC.VampireSetBitten:
                     byte bittenId = reader.ReadByte();

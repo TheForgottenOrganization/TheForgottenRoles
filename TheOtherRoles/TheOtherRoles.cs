@@ -58,6 +58,7 @@ namespace TheOtherRoles
             Logger.clearAndReload();
             Bait.clearAndReload();
             GhostLord.clearAndReload();
+            MrFreeze.clearAndReload();
         }
 
         public static class Jester {
@@ -909,6 +910,30 @@ namespace TheOtherRoles
             isDraging = false;
             deadBodyDraged = null;
             dragingDelaiAfterKill = CustomOptionHolder.undertakerDragingDelaiAfterKill.getFloat();
+        }
+    }
+
+   public static class MrFreeze {
+        public static PlayerControl mrFreeze;
+        public static Color color = Palette.ImpostorRed;
+    
+        public static float cooldown = 27.5f;
+        public static float duration = 5f;
+        public static float mrFreezeTimer = -1f;
+        public static float? originalSpeed = null;
+
+        private static Sprite buttonSprite;
+        public static Sprite getButtonSprite() {
+            if (buttonSprite) return buttonSprite;
+            buttonSprite = Helpers.loadSpriteFromResources("TheOtherRoles.Resources.MrFreezeButton.png", 115f);
+            return buttonSprite;
+        }
+
+        public static void clearAndReload() {            
+            mrFreeze = null;
+            mrFreezeTimer = -1f;
+            cooldown = CustomOptionHolder.mrFreezeCooldown.getFloat();
+            duration = CustomOptionHolder.mrFreezeDuration.getFloat();
         }
     }
 
