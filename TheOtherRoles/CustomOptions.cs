@@ -320,6 +320,11 @@ namespace TheOtherRoles {
             jackalAndSidekickHaveImpostorVision = CustomOption.Create(430, "Jackal And Sidekick Have Impostor Vision", false, jackalSpawnRate);
             jackalCanSeeEngineerVent = CustomOption.Create(431, "Jackal Can See If Engineer Is In A Vent", false, jackalSpawnRate);
 
+            vultureSpawnRate = CustomOption.Create(390, cs(Vulture.color, "Vulture"), rates, null, true);
+            vultureCooldown = CustomOption.Create(391, "Vulture Cooldown", 15f, 10f, 60f, 2.5f, vultureSpawnRate);
+            vultureNumberToWin = CustomOption.Create(392, "Number Of Corpses Needed To Be Eaten", 4f, 0f, 5f, 1f, vultureSpawnRate);
+            vultureCanUseVents = CustomOption.Create(393, "Vulture Can Use Vents", true, vultureSpawnRate);
+
             shifterSpawnRate = CustomOption.Create(70, cs(Shifter.color, "Shifter"), rates, null, true);
             shifterShiftsModifiers = CustomOption.Create(71, "Shifter Shifts Modifiers", true, shifterSpawnRate);
 
@@ -399,11 +404,6 @@ namespace TheOtherRoles {
             baitSpawnRate = CustomOption.Create(330, cs(Bait.color, "Bait"), rates, null, true);
             baitHighlightAllVents = CustomOption.Create(331, "Highlight All Vents If A Vent Is Occupied", true, baitSpawnRate);
             baitReportDelay = CustomOption.Create(332, "Bait Report Delay", 2f, 0f, 10f, 1f, baitSpawnRate);
-
-            vultureSpawnRate = CustomOption.Create(390, cs(Vulture.color, "Vulture"), rates, null, true);
-            vultureCooldown = CustomOption.Create(391, "Vulture Cooldown", 15f, 10f, 60f, 2.5f, vultureSpawnRate);
-            vultureNumberToWin = CustomOption.Create(392, "Number Of Corpses Needed To Be Eaten", 4f, 0f, 5f, 1f, vultureSpawnRate);
-            vultureCanUseVents = CustomOption.Create(393, "Vulture Can Use Vents", true, vultureSpawnRate);
 
             mediumSpawnRate = CustomOption.Create(400, cs(Medium.color, "Medium"), rates, null, true);
             mediumCooldown = CustomOption.Create(401, "Medium Questioning Cooldown", 30f, 5f, 120f, 5f, mediumSpawnRate);
