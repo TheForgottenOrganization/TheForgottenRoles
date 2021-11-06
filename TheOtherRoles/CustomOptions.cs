@@ -83,6 +83,7 @@ namespace TheOtherRoles {
         public static CustomOption jackalPromotedFromSidekickCanCreateSidekick;
         public static CustomOption jackalCanCreateSidekickFromImpostor;
         public static CustomOption jackalAndSidekickHaveImpostorVision;
+        public static CustomOption jackalCanSeeEngineerVent;
 
         public static CustomOption bountyHunterSpawnRate;
         public static CustomOption bountyHunterBountyDuration;
@@ -188,6 +189,18 @@ namespace TheOtherRoles {
         public static CustomOption ghostLordSpawnRate;
         public static CustomOption ghostLordCooldown;
         public static CustomOption ghostLordDuration;
+
+        public static CustomOption vultureSpawnRate;
+        public static CustomOption vultureCooldown;
+        public static CustomOption vultureNumberToWin;
+        public static CustomOption vultureCanUseVents;
+
+        public static CustomOption mediumSpawnRate;
+        public static CustomOption mediumCooldown;
+        public static CustomOption mediumDuration;
+        public static CustomOption mediumOneTimeUse;
+
+
 
         public static CustomOption maxNumberOfMeetings;
         public static CustomOption blockSkippingInEmergencyMeetings;
@@ -305,6 +318,7 @@ namespace TheOtherRoles {
             jackalPromotedFromSidekickCanCreateSidekick = CustomOption.Create(228, "Jackals Promoted From Sidekick Can Create A Sidekick", true, jackalSpawnRate);
             jackalCanCreateSidekickFromImpostor = CustomOption.Create(229, "Jackals Can Make An Impostor To His Sidekick", true, jackalSpawnRate);
             jackalAndSidekickHaveImpostorVision = CustomOption.Create(430, "Jackal And Sidekick Have Impostor Vision", false, jackalSpawnRate);
+            jackalCanSeeEngineerVent = CustomOption.Create(431, "Jackal Can See If Engineer Is In A Vent", false, jackalSpawnRate);
 
             shifterSpawnRate = CustomOption.Create(70, cs(Shifter.color, "Shifter"), rates, null, true);
             shifterShiftsModifiers = CustomOption.Create(71, "Shifter Shifts Modifiers", true, shifterSpawnRate);
@@ -386,6 +400,16 @@ namespace TheOtherRoles {
             baitHighlightAllVents = CustomOption.Create(331, "Highlight All Vents If A Vent Is Occupied", true, baitSpawnRate);
             baitReportDelay = CustomOption.Create(332, "Bait Report Delay", 2f, 0f, 10f, 1f, baitSpawnRate);
 
+            vultureSpawnRate = CustomOption.Create(390, cs(Vulture.color, "Vulture"), rates, null, true);
+            vultureCooldown = CustomOption.Create(391, "Vulture Cooldown", 15f, 10f, 60f, 2.5f, vultureSpawnRate);
+            vultureNumberToWin = CustomOption.Create(392, "Number Of Corpses Needed To Be Eaten", 4f, 0f, 5f, 1f, vultureSpawnRate);
+            vultureCanUseVents = CustomOption.Create(393, "Vulture Can Use Vents", true, vultureSpawnRate);
+
+            mediumSpawnRate = CustomOption.Create(400, cs(Medium.color, "Medium"), rates, null, true);
+            mediumCooldown = CustomOption.Create(401, "Medium Questioning Cooldown", 30f, 5f, 120f, 5f, mediumSpawnRate);
+            mediumDuration = CustomOption.Create(402, "Medium Questioning Duration", 3f, 0f, 15f, 1f, mediumSpawnRate);
+            mediumOneTimeUse = CustomOption.Create(403, "Each Soul Can Only Be Questioned Once", false, mediumSpawnRate);
+
             // Other options
             maxNumberOfMeetings = CustomOption.Create(3, "Number Of Meetings (excluding Mayor meeting)", 10, 0, 15, 1, null, true);
             blockSkippingInEmergencyMeetings = CustomOption.Create(4, "Block Skipping In Emergency Meetings", false);
@@ -399,6 +423,8 @@ namespace TheOtherRoles {
             blockedRolePairings.Add((byte)RoleId.Mini, new [] { (byte)RoleId.Spy});
             blockedRolePairings.Add((byte)RoleId.Bait, new[] { (byte)RoleId.Seer });
             blockedRolePairings.Add((byte)RoleId.Seer, new[] { (byte)RoleId.Bait });
+            blockedRolePairings.Add((byte)RoleId.Medium, new[] { (byte)RoleId.Seer });
+            blockedRolePairings.Add((byte)RoleId.Seer, new[] { (byte)RoleId.Medium });
 
         }
     }
@@ -707,7 +733,7 @@ namespace TheOtherRoles {
             var hudString = sb.ToString();
 
             int defaultSettingsLines = 19;
-            int roleSettingsLines = defaultSettingsLines + 38;
+            int roleSettingsLines = defaultSettingsLines + 42;
             int detailedSettingsP1 = roleSettingsLines + 37;
             int detailedSettingsP2 = detailedSettingsP1 + 38;
             int end1 = hudString.TakeWhile(c => (defaultSettingsLines -= (c == '\n' ? 1 : 0)) > 0).Count();
@@ -729,7 +755,7 @@ namespace TheOtherRoles {
                 gap = 18;
                 index = hudString.TakeWhile(c => (gap -= (c == '\n' ? 1 : 0)) > 0).Count();
                 hudString = hudString.Insert(index + 1, "\n");
-                gap = 22;
+                gap = 23;
                 index = hudString.TakeWhile(c => (gap -= (c == '\n' ? 1 : 0)) > 0).Count();
                 hudString = hudString.Insert(index + 1, "\n");
             } else if (counter == 2) {
