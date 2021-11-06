@@ -18,7 +18,7 @@ Even more roles are coming soon :)
 | [Evil Guesser](#guesser) | [Nice Guesser](#guesser) | [Jester](#jester) |  |
 | [Bounty Hunter](#bounty-hunter) | [Detective](#detective) | [Jackal](#jackal) |  |
 | [Camouflager](#camouflager) | [Engineer](#engineer) | [Sidekick](#sidekick) |  |
-| [Cleaner](#cleaner) | [Hacker](#hacker) |  |  |
+| [Cleaner](#cleaner) | [Hacker](#hacker) | [Vulture](#vulture) |  |
 | [Eraser](#eraser) | [Lighter](#lighter) |  |  |
 | [Godfather (Mafia)](#mafia) | [Mayor](#mayor) |  |  |
 | [Mafioso (Mafia)](#mafia) | [Medic](#medic) |  |  |
@@ -33,6 +33,7 @@ Even more roles are coming soon :)
 | [Mr Freeze](#mr-freeze) |  [Tracker](#tracker) |  |  |
 |  |  [Logger](#logger) |  |  |
 |  |  [Bait](#bait) |  |
+|  |  [Medium](#medium) |  |
 
 The [Role Assignment](#role-assignment) sections explains how the roles are being distributed among the players.
 
@@ -870,6 +871,48 @@ The vents will be sealed after the next meeting, players can't enter or exit sea
 | Number Of Screws Per Cam | The number of screws it takes to place a camera
 | Number Of Screws Per Vent | The number of screws it takes to seal a vent
 -----------------------
+
+## Medium
+### **Team: Crewmates**
+\
+Created by [Mallöris](https://github.com/Mallaris)\
+\
+The medium is a crewmate who can ask the souls of dead players for information. Like the Seer, it sees the places where the players have died (after the next meeting) and can question them. It then gets random information about the soul or the killer in the chat. The souls only stay for one round, i.e. until the next meeting. Depending on the options, the souls can only be questioned once and then disappear.
+
+Questions: What is your name?
+What is your Role?
+What is your killer's color type?
+When did you die?
+What is your killers role? (mini exluded)
+
+### Game Options
+| Name | Description
+|----------|:-------------:|
+| Bait Spawn Chance | -
+| Medium Cooldown | -
+| Medium Duration | The time it takes to question a soul
+| Medium Each Soul Can Only Be Questioned Once | If set to true, souls can only be questioned once and then disappear
+-----------------------
+
+## Vulture
+### **Team: Neutral**
+\
+Created by [Mallöris](https://github.com/Mallaris)\
+\
+The Vulture does not have any tasks, he has to win the game as a solo.\
+The Vulture is a neutral role that must eat a specified number of corpses (depending on the options) in order to win.\
+When a player dies, the Vulture gets an arrow pointing to the corpse.
+
+### Game Options
+| Name | Description |
+|----------|:-------------:|
+| Vulture Spawn Chance | -
+| Vulture Countdown | -
+| Number Of Corpses Needed To Be Eaten | Corpes needed to be eaten to win the game
+| Vulture Can Use Vents | -
+-----------------------
+
+
 
 ## Role Assignment
 We are still improving the role assignment system. It's not that intuitive right now, but it's more flexible than the older one
