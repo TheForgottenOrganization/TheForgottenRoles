@@ -44,7 +44,7 @@ namespace TheOtherRoles.Patches {
 
             var usableDistance = __instance.UsableDistance;
             if (__instance.name.StartsWith("JackInTheBoxVent_")) {
-                if((Trickster.trickster == PlayerControl.LocalPlayer ) || (Engineer.engineer != null && Engineer.engineer == PlayerControl.LocalPlayer)) {
+                if(Trickster.trickster == PlayerControl.LocalPlayer) {
                     // Reduce the usable distance to reduce the risk of gettings stuck while trying to jump into the box if it's placed near objects
                     usableDistance = 0.4f;
                 } else {
