@@ -13,7 +13,7 @@ using UnityEngine;
 using System.Reflection;
 
 namespace TheOtherRoles.Patches {
-    [HarmonyPatch(typeof(ExileController), "Begin")]
+    [HarmonyPatch(typeof(ExileController), nameof(ExileController.Begin))]
     class ExileControllerBeginPatch {
         public static void Prefix(ExileController __instance, [HarmonyArgument(0)]ref GameData.PlayerInfo exiled, [HarmonyArgument(1)]bool tie) {
             // Medic shield
@@ -51,10 +51,23 @@ namespace TheOtherRoles.Patches {
                 JackInTheBox.convertToVents();
             }
 
-            if (Logger.logger != null)
-            {
-                LogTrap.clearLogTrapsPlayerName();
+            // Witch execute casted spells
+            if (Witch.witch != null && Witch.futureSpelled != null && AmongUsClient.Instance.AmHost) {
+                bool exiledIsWitch = exiled != null && exiled.PlayerId == Witch.witch.PlayerId;
+                bool witchDiesWithExiledLover = exiled != null && Lovers.existing() && Lovers.bothDie && (Lovers.lover1.PlayerId == Witch.witch.PlayerId || Lovers.lover2.PlayerId == Witch.witch.PlayerId) && (exiled.PlayerId == Lovers.lover1.PlayerId || exiled.PlayerId == Lovers.lover2.PlayerId);
+
+                if ((witchDiesWithExiledLover || exiledIsWitch) && Witch.witchVoteSavesTargets) Witch.futureSpelled = new List<PlayerControl>();
+                foreach (PlayerControl target in Witch.futureSpelled) {
+                    if (target != null && !target.Data.IsDead && Helpers.checkMuderAttempt(Witch.witch, target, true) == MurderAttemptResult.PerformKill)
+                    {
+                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.UncheckedExilePlayer, Hazel.SendOption.Reliable, -1);
+                        writer.Write(target.PlayerId);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        RPCProcedure.uncheckedExilePlayer(target.PlayerId);
+                    }
+                }
             }
+            Witch.futureSpelled = new List<PlayerControl>();
 
             // SecurityGuard vents and cameras
             var allCameras = ShipStatus.Instance.AllCameras.ToList();
@@ -97,7 +110,7 @@ namespace TheOtherRoles.Patches {
 
         static void WrapUpPostfix(GameData.PlayerInfo exiled) {
             // Mini exile lose condition
-            if (exiled != null && Mini.mini != null && Mini.mini.PlayerId == exiled.PlayerId && !Mini.isGrownUp() && !Mini.mini.Data.IsImpostor) {
+            if (exiled != null && Mini.mini != null && Mini.mini.PlayerId == exiled.PlayerId && !Mini.isGrownUp() && !Mini.mini.Data.Role.IsImpostor) {
                 Mini.triggerMiniLose = true;
             }
             // Jester win condition
@@ -109,8 +122,8 @@ namespace TheOtherRoles.Patches {
             CustomButton.MeetingEndedUpdate();
 
             // Mini set adapted cooldown
-            if (Mini.mini != null && PlayerControl.LocalPlayer == Mini.mini && Mini.mini.Data.IsImpostor) {
-                var multiplier = Mathf.Lerp(0.66f , 2f, 1 - Mini.growingProgress());
+            if (Mini.mini != null && PlayerControl.LocalPlayer == Mini.mini && Mini.mini.Data.Role.IsImpostor) {
+                var multiplier = Mini.isGrownUp() ? 0.66f : 2f;
                 Mini.mini.SetKillTimer(PlayerControl.GameOptions.KillCooldown * multiplier);
             }
 
@@ -137,6 +150,9 @@ namespace TheOtherRoles.Patches {
                 Seer.deadBodyPositions = new List<Vector3>();
             }
 
+            // Tracker reset deadBodyPositions
+            Tracker.deadBodyPositions = new List<Vector3>();
+
             // Arsonist deactivate dead poolable players
             if (Arsonist.arsonist != null && Arsonist.arsonist == PlayerControl.LocalPlayer) {
                 int visibleCounter = 0;
@@ -158,18 +174,14 @@ namespace TheOtherRoles.Patches {
                 BountyHunter.bountyUpdateTimer = 0f;
 
             // Medium spawn souls
-            if (Medium.medium != null && PlayerControl.LocalPlayer == Medium.medium)
-            {
-                if (Medium.souls != null)
-                {
+            if (Medium.medium != null && PlayerControl.LocalPlayer == Medium.medium) {
+                if (Medium.souls != null) {
                     foreach (SpriteRenderer sr in Medium.souls) UnityEngine.Object.Destroy(sr.gameObject);
                     Medium.souls = new List<SpriteRenderer>();
                 }
 
-                if (Medium.featureDeadBodies != null)
-                {
-                    foreach ((DeadPlayer db, Vector3 ps) in Medium.featureDeadBodies)
-                    {
+                if (Medium.featureDeadBodies != null) {
+                    foreach ((DeadPlayer db, Vector3 ps) in Medium.featureDeadBodies) {
                         GameObject s = new GameObject();
                         s.transform.position = ps;
                         s.layer = 5;
@@ -181,6 +193,9 @@ namespace TheOtherRoles.Patches {
                     Medium.featureDeadBodies = new List<Tuple<DeadPlayer, Vector3>>();
                 }
             }
+
+            if (Lawyer.lawyer != null && PlayerControl.LocalPlayer == Lawyer.lawyer && !Lawyer.lawyer.Data.IsDead)
+                Lawyer.meetings++;
         }
     }
 
