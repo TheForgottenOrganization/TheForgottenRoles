@@ -339,6 +339,45 @@ namespace TheOtherRoles.Patches {
             }
         }
 
+        public static void updatePlayerInfoForBoutyHunter()
+        {
+            if(BountyHunter.bountyHunter != null && BountyHunter.bountyHunter == PlayerControl.LocalPlayer && BountyHunter.seeRoles)
+            foreach (PlayerControl p in PlayerControl.AllPlayerControls)
+            {
+                    Transform playerInfoTransform = p.nameText.transform.parent.FindChild("Info");
+                    TMPro.TextMeshPro playerInfo = playerInfoTransform != null ? playerInfoTransform.GetComponent<TMPro.TextMeshPro>() : null;
+                    if (playerInfo == null)
+                    {
+                        playerInfo = UnityEngine.Object.Instantiate(p.nameText, p.nameText.transform.parent);
+                        playerInfo.transform.localPosition += Vector3.up * 0.5f;
+                        playerInfo.fontSize *= 0.75f;
+                        playerInfo.gameObject.name = "Info";
+                    }
+
+                    PlayerVoteArea playerVoteArea = MeetingHud.Instance?.playerStates?.FirstOrDefault(x => x.TargetPlayerId == p.PlayerId);
+                    Transform meetingInfoTransform = playerVoteArea != null ? playerVoteArea.NameText.transform.parent.FindChild("Info") : null;
+                    TMPro.TextMeshPro meetingInfo = meetingInfoTransform != null ? meetingInfoTransform.GetComponent<TMPro.TextMeshPro>() : null;
+                    if (meetingInfo == null && playerVoteArea != null)
+                    {
+                        meetingInfo = UnityEngine.Object.Instantiate(playerVoteArea.NameText, playerVoteArea.NameText.transform.parent);
+                        meetingInfo.transform.localPosition += Vector3.down * 0.20f;
+                        meetingInfo.fontSize *= 0.75f;
+                        meetingInfo.gameObject.name = "Info";
+                    }
+
+                    var (tasksCompleted, tasksTotal) = TasksHandler.taskInfo(p.Data);
+                    string roleNames = String.Join(" ", RoleInfo.getRoleInfoForPlayer(p).Select(x => Helpers.cs(x.color, x.name)).ToArray());
+                    string taskInfo = tasksTotal > 0 ? $"<color=#FAD934FF>({tasksCompleted}/{tasksTotal})</color>" : "";
+
+                    string playerInfoText = $"{roleNames} {taskInfo}".Trim();
+                    string meetingInfoText = playerInfoText;
+               
+                    playerInfo.text = playerInfoText;
+                    playerInfo.gameObject.SetActive(p.Visible);
+                    if (meetingInfo != null) meetingInfo.text = MeetingHud.Instance.state == MeetingHud.VoteStates.Results ? "" : meetingInfoText;
+                }
+        }
+
         public static void updatePlayerInfo() {
             foreach (PlayerControl p in PlayerControl.AllPlayerControls) {
                 if (p != PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead) continue;
@@ -635,6 +674,7 @@ namespace TheOtherRoles.Patches {
 
                 // Update Player Info
                 updatePlayerInfo();
+                updatePlayerInfoForBoutyHunter();
 
                 // Time Master
                 bendTimeUpdate();
