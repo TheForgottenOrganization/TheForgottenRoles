@@ -265,7 +265,7 @@ namespace TheOtherRoles.Patches {
                 if (CustomOptionHolder.guesserSeeOnlyExistingRoles.getBool() && roleInfo.roleId != RoleId.Crewmate && roleInfo.roleId != RoleId.Shifter) {
                     bool found = false;
                     foreach (PlayerControl player in PlayerControl.AllPlayerControls) {
-                        if (player != null && player.Data != null && !player.Data.IsImpostor && RoleInfo.getRoleInfoForPlayer(player) != null && RoleInfo.getRoleInfoForPlayer(player).Contains(roleInfo)) {
+                        if (player != null && player.Data != null &&  RoleInfo.getRoleInfoForPlayer(player) != null && RoleInfo.getRoleInfoForPlayer(player).Contains(roleInfo)) {
                             found = true;
                             break;
                         }
