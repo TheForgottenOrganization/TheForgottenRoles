@@ -366,11 +366,22 @@ namespace TheOtherRoles.Patches {
                     }
 
                     var (tasksCompleted, tasksTotal) = TasksHandler.taskInfo(p.Data);
-                    string roleNames = String.Join(" ", RoleInfo.getRoleInfoForPlayer(p).Select(x => Helpers.cs(x.color, x.name)).ToArray());
-                    string taskInfo = tasksTotal > 0 ? $"<color=#FAD934FF>({tasksCompleted}/{tasksTotal})</color>" : "";
+                    string roleNames = String.Join(" ", RoleInfo.getRoleInfoForPlayer(p).Select(x => Helpers.cs(x.color, x.name)).ToArray());                    
 
-                    string playerInfoText = $"{roleNames} {taskInfo}".Trim();
-                    string meetingInfoText = playerInfoText;
+                    string playerInfoText = "";                     
+                    string meetingInfoText = "";
+                    if(BountyHunter.seeRolesOfBountyOnly)
+                    {
+                        if(BountyHunter.bounty == p)
+                        {
+                            playerInfoText = $"{roleNames} ".Trim();
+                            meetingInfoText = playerInfoText;
+                        }
+                    } else
+                    {
+                        playerInfoText = $"{roleNames} ".Trim();
+                        meetingInfoText = playerInfoText;
+                    }
                
                     playerInfo.text = playerInfoText;
                     playerInfo.gameObject.SetActive(p.Visible);

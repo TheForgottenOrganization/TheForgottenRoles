@@ -1116,6 +1116,7 @@ namespace TheOtherRoles
         public static float punishmentTime = 15f;
         public static float arrowUpdateIntervall = 10f;
         public static bool seeRoles = true;
+        public static bool seeRolesOfBountyOnly = true;
 
         public static float arrowUpdateTimer = 0f;
         public static float bountyUpdateTimer = 0f;
@@ -1142,6 +1143,7 @@ namespace TheOtherRoles
             punishmentTime = CustomOptionHolder.bountyHunterPunishmentTime.getFloat();
             showArrow = CustomOptionHolder.bountyHunterShowArrow.getBool();
             seeRoles = CustomOptionHolder.bountyHunterSeeRoles.getBool();
+            seeRolesOfBountyOnly = CustomOptionHolder.bountyHunterSeeRolesOfBountyOnly.getBool();
             arrowUpdateIntervall = CustomOptionHolder.bountyHunterArrowUpdateIntervall.getFloat();
         }
     }
