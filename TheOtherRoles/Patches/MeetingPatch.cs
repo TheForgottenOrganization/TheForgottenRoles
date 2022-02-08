@@ -265,7 +265,7 @@ namespace TheOtherRoles.Patches {
                 if (CustomOptionHolder.guesserSeeOnlyExistingRoles.getBool() && roleInfo.roleId != RoleId.Crewmate && roleInfo.roleId != RoleId.Shifter) {
                     bool found = false;
                     foreach (PlayerControl player in PlayerControl.AllPlayerControls) {
-                        if (player != null && player.Data != null && !player.Data.IsImpostor && RoleInfo.getRoleInfoForPlayer(player) != null && RoleInfo.getRoleInfoForPlayer(player).Contains(roleInfo)) {
+                        if (player != null && player.Data != null &&  RoleInfo.getRoleInfoForPlayer(player) != null && RoleInfo.getRoleInfoForPlayer(player).Contains(roleInfo)) {
                             found = true;
                             break;
                         }
@@ -379,6 +379,11 @@ namespace TheOtherRoles.Patches {
             bool isLogger = Logger.logger != null && PlayerControl.LocalPlayer == Logger.logger;
             if (isLogger)
             {
+
+                if (AmongUsClient.Instance.AmClient && DestroyableSingleton<HudManager>.Instance)
+                {
+                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Most recent to oldier");
+                }
                 for (int i = 0; i < LogTrap.logTraps.Count; i++)
                 {
                     string msg = $"log trap "+ LogTrap.colorTrap[i] +":";

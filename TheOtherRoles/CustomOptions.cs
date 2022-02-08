@@ -91,6 +91,8 @@ namespace TheOtherRoles {
         public static CustomOption bountyHunterPunishmentTime;
         public static CustomOption bountyHunterShowArrow;
         public static CustomOption bountyHunterArrowUpdateIntervall;
+        public static CustomOption bountyHunterSeeRoles;
+        public static CustomOption bountyHunterSeeRolesOfBountyOnly;
 
         public static CustomOption shifterSpawnRate;
         public static CustomOption shifterShiftsModifiers;
@@ -276,6 +278,8 @@ namespace TheOtherRoles {
             bountyHunterPunishmentTime = CustomOption.Create(323, "Additional Cooldown After Killing Others", 0f, 0f, 60f, 2.5f, bountyHunterSpawnRate);
             bountyHunterShowArrow = CustomOption.Create(324, "Show Arrow Pointing Towards The Bounty", true, bountyHunterSpawnRate);
             bountyHunterArrowUpdateIntervall = CustomOption.Create(325, "Arrow Update Intervall", 1f, 1f, 10f, 1f, bountyHunterShowArrow);
+            bountyHunterSeeRoles = CustomOption.Create(326, "Bounty Hunter see existing roles", true, bountyHunterSpawnRate);
+            bountyHunterSeeRolesOfBountyOnly = CustomOption.Create(326, "Bounty Hunter see role of bounty only", true, bountyHunterSpawnRate);
 
             ghostLordSpawnRate = CustomOption.Create(370, cs(GhostLord.color, "Ghost Lord"), rates, null, true);
             ghostLordCooldown = CustomOption.Create(371, "Ghost Lord Cooldown", 27.5f, 10f, 60f, 2.5f, ghostLordSpawnRate);
@@ -422,9 +426,9 @@ namespace TheOtherRoles {
             blockedRolePairings.Add((byte)RoleId.Spy, new [] { (byte)RoleId.Mini});
             blockedRolePairings.Add((byte)RoleId.Mini, new [] { (byte)RoleId.Spy});
             blockedRolePairings.Add((byte)RoleId.Bait, new[] { (byte)RoleId.Seer });
-            blockedRolePairings.Add((byte)RoleId.Seer, new[] { (byte)RoleId.Bait, (byte)RoleId.Medium });
-            blockedRolePairings.Add((byte)RoleId.Medium, new[] { (byte)RoleId.Seer });
-
+            blockedRolePairings.Add((byte)RoleId.Seer, new[] { (byte)RoleId.Bait });
+            blockedRolePairings.Add((byte)RoleId.BountyHunter, new[] { (byte)RoleId.Guesser });
+            blockedRolePairings.Add((byte)RoleId.Guesser, new[] { (byte)RoleId.BountyHunter });
         }
     }
 
