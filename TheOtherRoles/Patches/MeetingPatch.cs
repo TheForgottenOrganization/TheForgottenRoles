@@ -379,6 +379,11 @@ namespace TheOtherRoles.Patches {
             bool isLogger = Logger.logger != null && PlayerControl.LocalPlayer == Logger.logger;
             if (isLogger)
             {
+
+                if (AmongUsClient.Instance.AmClient && DestroyableSingleton<HudManager>.Instance)
+                {
+                    DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, "Most recent to oldier");
+                }
                 for (int i = 0; i < LogTrap.logTraps.Count; i++)
                 {
                     string msg = $"log trap "+ LogTrap.colorTrap[i] +":";

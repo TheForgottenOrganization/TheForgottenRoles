@@ -163,11 +163,7 @@ namespace TheOtherRoles.Objects
                             foreach (PlayerTask task in PlayerControl.LocalPlayer.myTasks)
                                 if (task.TaskType == TaskTypes.FixComms) commsActive = true;
 
-                            if (Invisible.invisible != null && Invisible.invisible == currentPlayer && Invisible.invisibleTimer > 0 )
-                            {
-                               
-                            }
-                            else if (Camouflager.camouflageTimer > 0 || commsActive) 
+                         if (Camouflager.camouflageTimer > 0 || commsActive || (Invisible.invisible != null && Invisible.invisible == currentPlayer && Invisible.invisibleTimer > 0) ) 
                             {
                                 playersNameCurrentlyRecorded.Add("Anonymous");
                             }
