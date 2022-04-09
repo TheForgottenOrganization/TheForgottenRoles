@@ -366,7 +366,8 @@ namespace TheOtherRoles
 
         public static void timeMasterRewindTime() {
             TimeMaster.shieldActive = false; // Shield is no longer active when rewinding
-            if(TimeMaster.timeMaster != null && TimeMaster.timeMaster == PlayerControl.LocalPlayer) {
+            SoundEffectsManager.stop("timemasterShield");
+            if (TimeMaster.timeMaster != null && TimeMaster.timeMaster == PlayerControl.LocalPlayer) {
                 resetTimeMasterButton();
             }
             HudManager.Instance.FullScreen.color = new Color(0f, 0.5f, 0.8f, 0.3f);

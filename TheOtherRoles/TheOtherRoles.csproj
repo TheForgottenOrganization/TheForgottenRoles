@@ -16,11 +16,30 @@
         <EmbeddedResource Include="Resources\CustomHats\*.png" />
         <EmbeddedResource Include="Resources\*.png" />
         <EmbeddedResource Include="Resources\TricksterAnimation\*.png" />
+        <EmbeddedResource Include="Resources\SoundEffects\*.raw" />
     </ItemGroup>
 
     <ItemGroup>
-        <Reference Include="$(AmongUsLatest)/BepInEx/core/*.dll"/>
-        <Reference Include="$(AmongUsLatest)/BepInEx/unhollowed/*.dll"/>
+        <Reference Include="$(AmongUsLatest)/BepInEx/core/*.dll" />
+        <Reference Include="$(AmongUsLatest)/BepInEx/unhollowed/*.dll" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\SoundEffects\cleanerClean.raw" />
+      <None Remove="Resources\SoundEffects\engineerRepair.raw" />
+      <None Remove="Resources\SoundEffects\garlic.raw" />
+      <None Remove="Resources\SoundEffects\hackerHack.raw" />
+      <None Remove="Resources\SoundEffects\lighterLight.raw" />
+      <None Remove="Resources\SoundEffects\medicShield.raw" />
+      <None Remove="Resources\SoundEffects\mediumAsk.raw" />
+      <None Remove="Resources\SoundEffects\morphlingMorph.raw" />
+      <None Remove="Resources\SoundEffects\morphlingSample.raw" />
+      <None Remove="Resources\SoundEffects\securityGuardPlaceCam.raw" />
+      <None Remove="Resources\SoundEffects\timemasterShield.raw" />
+      <None Remove="Resources\SoundEffects\trackerTrackCorpses.raw" />
+      <None Remove="Resources\SoundEffects\trackerTrackPlayer.raw" />
+      <None Remove="Resources\SoundEffects\tricksterPlaceBox.raw" />
+      <None Remove="Resources\SoundEffects\vampireBite.raw" />
     </ItemGroup>
 
     <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
