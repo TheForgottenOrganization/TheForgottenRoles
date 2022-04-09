@@ -175,6 +175,15 @@ if (Sidekick.sidekick != null && Sidekick.sidekick == PlayerControl.LocalPlayer)
                         if (Lovers.lover1.PlayerId == player.TargetPlayerId || Lovers.lover2.PlayerId == player.TargetPlayerId)
                             player.NameText.text += suffix;
             }
+
+            if (PlayerControl.LocalPlayer != null && MeetingHud.Instance != null)
+            {
+                foreach (PlayerVoteArea player in MeetingHud.Instance.playerStates)
+                {
+                    var target = Helpers.playerById(player.TargetPlayerId);
+                    if (target != null) player.NameText.text += $" ({(Helpers.isLighterColor(target.Data.ColorId) ? "L" : "D")})";
+                }
+            }
         }
 
         static void updateShielded() {
