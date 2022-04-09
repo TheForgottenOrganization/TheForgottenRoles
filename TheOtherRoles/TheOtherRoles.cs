@@ -1105,6 +1105,92 @@ namespace TheOtherRoles
         }
     }
 
+    public static class Transporter
+    {
+        public static PlayerControl transporter;
+        public static Color color = Palette.ImpostorRed;
+        private static Sprite sampleSprite;
+        private static Sprite morphSprite;
+
+        public static float cooldown = 15f;
+
+        public static PlayerControl currentTarget;
+        public static PlayerControl sampledTarget;
+        public static PlayerControl transporterTarget;
+
+        public static void TransportPlayers(PlayerControl TP2)
+        {
+            var TP1 = Transporter.transporter;            
+            var deadBodies = UnityEngine.Object.FindObjectsOfType<DeadBody>();
+            DeadBody Player1Body = null;
+            DeadBody Player2Body = null;
+            if (TP1.Data.IsDead)
+                foreach (var body in deadBodies)
+                    if (body.ParentId == TP1.PlayerId)
+                        Player1Body = body;
+            if (TP2.Data.IsDead)
+                foreach (var body in deadBodies)
+                    if (body.ParentId == TP2.PlayerId)
+                        Player2Body = body;
+
+            if (TP1.inVent && PlayerControl.LocalPlayer.PlayerId == TP1.PlayerId)
+            {
+                TP1.MyPhysics.ExitAllVents();
+            }
+            if (TP2.inVent && PlayerControl.LocalPlayer.PlayerId == TP2.PlayerId)
+            {
+                TP2.MyPhysics.ExitAllVents();
+            }
+
+            if (Player1Body == null && Player2Body == null)
+            {
+                TP1.MyPhysics.ResetMoveState();
+                TP2.MyPhysics.ResetMoveState();
+                var TempPosition = TP1.GetTruePosition();
+                var TempFacing = TP1.myRend.flipX;
+                TP1.NetTransform.SnapTo(new Vector2(TP2.GetTruePosition().x, TP2.GetTruePosition().y + 0.3636f));
+                TP1.myRend.flipX = TP2.myRend.flipX;
+                TP2.NetTransform.SnapTo(new Vector2(TempPosition.x, TempPosition.y + 0.3636f));
+                TP2.myRend.flipX = TempFacing;
+            }
+
+            TP1.moveable = true;
+            TP2.moveable = true;
+            TP1.Collider.enabled = true;
+            TP2.Collider.enabled = true;
+            TP1.NetTransform.enabled = true;
+            TP2.NetTransform.enabled = true;
+        }
+
+        public static void resetTransporter()
+        {
+            transporterTarget = null;           
+        }
+
+        public static void clearAndReload()
+        {
+            transporter = null;
+            currentTarget = null;
+            sampledTarget = null;
+            transporterTarget = null;
+            cooldown = CustomOptionHolder.transporterCooldown.getFloat();
+        }
+
+        public static Sprite getTransporterSampleSprite()
+        {
+            if (sampleSprite) return sampleSprite;
+            sampleSprite = Helpers.loadSpriteFromResources("TheOtherRoles.Resources.SampleButton.png", 115f);
+            return sampleSprite;
+        }
+
+        public static Sprite getTransporterMorphSprite()
+        {
+            if (morphSprite) return morphSprite;
+            morphSprite = Helpers.loadSpriteFromResources("TheOtherRoles.Resources.TransporterButton.png", 115f);
+            return morphSprite;
+        }
+    }
+
     public static class BountyHunter {
         public static PlayerControl bountyHunter;
         public static Color color = Palette.ImpostorRed;

@@ -17,6 +17,7 @@ namespace TheOtherRoles
         private static CustomButton medicShieldButton;
         private static CustomButton shifterShiftButton;
         private static CustomButton morphlingButton;
+        private static CustomButton transporterButton;
         private static CustomButton invisibleButton;
         private static CustomButton camouflagerButton;
         private static CustomButton mrFreezeButton;
@@ -51,6 +52,7 @@ namespace TheOtherRoles
             medicShieldButton.MaxTimer = 0f;
             shifterShiftButton.MaxTimer = 0f;
             morphlingButton.MaxTimer = Morphling.cooldown;
+            transporterButton.MaxTimer = Transporter.cooldown;
             invisibleButton.MaxTimer = Invisible.cooldown;
             camouflagerButton.MaxTimer = Camouflager.cooldown;
             mrFreezeButton.MaxTimer = MrFreeze.cooldown;
@@ -337,6 +339,42 @@ namespace TheOtherRoles
                     }
                 }
             );
+
+            // Transporter morph
+            transporterButton = new CustomButton(
+                () => {
+                    if (Transporter.sampledTarget != null)
+                    {
+                        MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.TransporterSwap, Hazel.SendOption.Reliable, -1);
+                        writer.Write(Transporter.sampledTarget.PlayerId);
+                        AmongUsClient.Instance.FinishRpcImmediately(writer);
+                        RPCProcedure.TransporterSwap(Transporter.sampledTarget.PlayerId);
+                        Transporter.sampledTarget = null;
+                        SoundEffectsManager.play("morphlingMorph");
+                    }
+                    else if (Transporter.currentTarget != null)
+                    {
+                        Transporter.sampledTarget = Transporter.currentTarget;
+                        transporterButton.Sprite = Transporter.getTransporterMorphSprite();
+                        transporterButton.EffectDuration = 1f;
+                        transporterButton.Timer = transporterButton.MaxTimer;
+                        SoundEffectsManager.play("morphlingSample");
+                    }
+                },
+                () => { return Transporter.transporter != null && Transporter.transporter == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead; },
+                () => { return (Transporter.currentTarget || Transporter.sampledTarget) && PlayerControl.LocalPlayer.CanMove; },
+                () => {
+                    transporterButton.Timer = transporterButton.MaxTimer;
+                    transporterButton.Sprite = Transporter.getTransporterSampleSprite();
+                    transporterButton.killButtonManager.TimerText.color = Palette.EnabledColor;
+                    Transporter.sampledTarget = null;
+                },
+                Transporter.getTransporterSampleSprite(),
+                 new Vector3(-1.3f, 1.3f, 0f),
+                __instance,
+                KeyCode.Q
+            );
+           
 
             // Invisible invis
             invisibleButton = new CustomButton(

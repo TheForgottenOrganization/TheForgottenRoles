@@ -136,7 +136,14 @@ namespace TheOtherRoles.Patches {
             Morphling.currentTarget = setTarget();
             setPlayerOutline(Morphling.currentTarget, Morphling.color);
         }
-        
+
+        static void transporterSetTarget()
+        {
+            if (Transporter.transporter == null || Transporter.transporter != PlayerControl.LocalPlayer) return;
+            Transporter.currentTarget = setTarget();
+            setPlayerOutline(Transporter.currentTarget, Transporter.color);
+        }
+
         static void sheriffSetTarget() {
             if (Sheriff.sheriff == null || Sheriff.sheriff != PlayerControl.LocalPlayer) return;
             Sheriff.currentTarget = setTarget();
@@ -687,6 +694,8 @@ namespace TheOtherRoles.Patches {
                 bendTimeUpdate();
                 // Morphling
                 morphlingSetTarget();
+                // Transporter
+                transporterSetTarget();
                 // Medic
                 medicSetTarget();
                 // Shifter

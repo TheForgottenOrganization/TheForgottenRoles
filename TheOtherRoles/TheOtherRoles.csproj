@@ -40,6 +40,7 @@
       <None Remove="Resources\SoundEffects\trackerTrackPlayer.raw" />
       <None Remove="Resources\SoundEffects\tricksterPlaceBox.raw" />
       <None Remove="Resources\SoundEffects\vampireBite.raw" />
+      <None Remove="Resources\transporter.png" />
     </ItemGroup>
 
     <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
