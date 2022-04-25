@@ -88,8 +88,7 @@ namespace TheOtherRoles
             arsonistButton.EffectDuration = Arsonist.duration;
             ghostLordButton.EffectDuration = GhostLord.duration;
             loggerButton.MaxTimer = Logger.cooldown;
-            mediumButton.EffectDuration = Medium.duration;
-
+            mediumButton.EffectDuration = Medium.duration;           
 
             // Already set the timer to the max, as the button is enabled during the game and not available at the start
             lightsOutButton.Timer = lightsOutButton.MaxTimer;
@@ -343,23 +342,24 @@ namespace TheOtherRoles
             // Transporter morph
             transporterButton = new CustomButton(
                 () => {
-                    if (Transporter.sampledTarget != null)
+                    if (Transporter.currentTarget != null)
+                    {
+                        Transporter.sampledTarget = Transporter.currentTarget;
+                        transporterButton.Sprite = Transporter.getTransporterMorphSprite();
+                        transporterButton.Timer = Transporter.delaiAfterScan;
+                        SoundEffectsManager.play("morphlingSample");
+                    }
+                    else if (Transporter.sampledTarget != null)
                     {
                         MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.TransporterSwap, Hazel.SendOption.Reliable, -1);
                         writer.Write(Transporter.sampledTarget.PlayerId);
                         AmongUsClient.Instance.FinishRpcImmediately(writer);
                         RPCProcedure.TransporterSwap(Transporter.sampledTarget.PlayerId);
                         Transporter.sampledTarget = null;
-                        SoundEffectsManager.play("morphlingMorph");
+                        transporterButton.Timer = Transporter.cooldown;
+                        SoundEffectsManager.play("morphlingMorph");                        
                     }
-                    else if (Transporter.currentTarget != null)
-                    {
-                        Transporter.sampledTarget = Transporter.currentTarget;
-                        transporterButton.Sprite = Transporter.getTransporterMorphSprite();
-                        transporterButton.EffectDuration = 1f;
-                        transporterButton.Timer = transporterButton.MaxTimer;
-                        SoundEffectsManager.play("morphlingSample");
-                    }
+                    
                 },
                 () => { return Transporter.transporter != null && Transporter.transporter == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead; },
                 () => { return (Transporter.currentTarget || Transporter.sampledTarget) && PlayerControl.LocalPlayer.CanMove; },
@@ -372,7 +372,7 @@ namespace TheOtherRoles
                 Transporter.getTransporterSampleSprite(),
                  new Vector3(-1.3f, 1.3f, 0f),
                 __instance,
-                KeyCode.Q
+                KeyCode.F
             );
            
 

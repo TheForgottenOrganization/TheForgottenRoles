@@ -54,6 +54,7 @@ namespace TheOtherRoles
             SecurityGuard.clearAndReload();
             Arsonist.clearAndReload();
             Guesser.clearAndReload();
+            Transporter.clearAndReload();
             BountyHunter.clearAndReload();
             Logger.clearAndReload();
             Bait.clearAndReload();
@@ -1113,10 +1114,12 @@ namespace TheOtherRoles
         private static Sprite morphSprite;
 
         public static float cooldown = 15f;
+        public static float delaiAfterScan = 15f;
+
+        public static Arrow localArrows = new Arrow(Color.blue);
 
         public static PlayerControl currentTarget;
         public static PlayerControl sampledTarget;
-        public static PlayerControl transporterTarget;
 
         public static void TransportPlayers(PlayerControl TP2)
         {
@@ -1162,18 +1165,13 @@ namespace TheOtherRoles
             TP2.NetTransform.enabled = true;
         }
 
-        public static void resetTransporter()
-        {
-            transporterTarget = null;           
-        }
-
         public static void clearAndReload()
         {
             transporter = null;
             currentTarget = null;
             sampledTarget = null;
-            transporterTarget = null;
-            cooldown = CustomOptionHolder.transporterCooldown.getFloat();
+            cooldown = CustomOptionHolder.transporterScanCooldown.getFloat();
+            delaiAfterScan = CustomOptionHolder.transporterDelaiAfterScan.getFloat();
         }
 
         public static Sprite getTransporterSampleSprite()

@@ -30,7 +30,8 @@ namespace TheOtherRoles {
         public static CustomOption morphlingDuration;
 
         public static CustomOption transporterSpawnRate;
-        public static CustomOption transporterCooldown;
+        public static CustomOption transporterScanCooldown;
+        public static CustomOption transporterDelaiAfterScan;
 
         public static CustomOption invisibleSpawnRate;
         public static CustomOption invisibleCooldown;
@@ -293,7 +294,8 @@ namespace TheOtherRoles {
             warlockRootTime = CustomOption.Create(272, "Warlock Root Time", 10f, 0f, 15f, 1f, warlockSpawnRate);
 
             transporterSpawnRate = CustomOption.Create(410, cs(Transporter.color, "Transporter"), rates, null, true);
-            transporterCooldown = CustomOption.Create(411, "Transporter Cooldown", 10f, 1f, 30f, 1f, transporterSpawnRate);
+            transporterScanCooldown = CustomOption.Create(411, "Transporter Scan Cooldown", 10f, 1f, 30f, 1f, transporterSpawnRate);
+            transporterDelaiAfterScan = CustomOption.Create(412, "Transporter Transport Delai After Scan", 1f, 1f, 30f, 1f, transporterSpawnRate);
 
             miniSpawnRate = CustomOption.Create(180, cs(Mini.color, "Mini"), rates, null, true);
             miniGrowingUpDuration = CustomOption.Create(181, "Mini Growing Up Duration", 600f, 100f, 1500f, 50f, miniSpawnRate);
