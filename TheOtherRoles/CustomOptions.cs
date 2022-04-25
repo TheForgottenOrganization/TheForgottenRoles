@@ -32,6 +32,8 @@ namespace TheOtherRoles {
         public static CustomOption transporterSpawnRate;
         public static CustomOption transporterScanCooldown;
         public static CustomOption transporterDelaiAfterScan;
+        public static CustomOption transporterAddArrow;
+        public static CustomOption transporterUpdateIntervall;
 
         public static CustomOption invisibleSpawnRate;
         public static CustomOption invisibleCooldown;
@@ -296,6 +298,8 @@ namespace TheOtherRoles {
             transporterSpawnRate = CustomOption.Create(410, cs(Transporter.color, "Transporter"), rates, null, true);
             transporterScanCooldown = CustomOption.Create(411, "Transporter Scan Cooldown", 10f, 1f, 30f, 1f, transporterSpawnRate);
             transporterDelaiAfterScan = CustomOption.Create(412, "Transporter Transport Delai After Scan", 1f, 1f, 30f, 1f, transporterSpawnRate);
+            transporterAddArrow = CustomOption.Create(413, "Add Arrow To Sampled Target", true, transporterSpawnRate);
+            transporterUpdateIntervall = CustomOption.Create(414, "Transporter Update Intervall", 0.5f, 0.2f, 5f, 0.2f, transporterSpawnRate);
 
             miniSpawnRate = CustomOption.Create(180, cs(Mini.color, "Mini"), rates, null, true);
             miniGrowingUpDuration = CustomOption.Create(181, "Mini Growing Up Duration", 600f, 100f, 1500f, 50f, miniSpawnRate);

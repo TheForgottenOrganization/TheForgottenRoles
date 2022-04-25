@@ -1116,7 +1116,10 @@ namespace TheOtherRoles
         public static float cooldown = 15f;
         public static float delaiAfterScan = 15f;
 
-        public static Arrow localArrows = new Arrow(Color.blue);
+        public static bool haveArrow = true;
+        public static float arrowUpdateInterval = 1f;
+        public static Arrow localArrow = new Arrow(Color.blue);        
+        public static float timeUntilUpdate = 0f;
 
         public static PlayerControl currentTarget;
         public static PlayerControl sampledTarget;
@@ -1170,8 +1173,14 @@ namespace TheOtherRoles
             transporter = null;
             currentTarget = null;
             sampledTarget = null;
+            timeUntilUpdate = 0f;
             cooldown = CustomOptionHolder.transporterScanCooldown.getFloat();
             delaiAfterScan = CustomOptionHolder.transporterDelaiAfterScan.getFloat();
+            haveArrow = CustomOptionHolder.transporterAddArrow.getBool();
+            arrowUpdateInterval = CustomOptionHolder.transporterUpdateIntervall.getFloat();
+            if (localArrow?.arrow != null) UnityEngine.Object.Destroy(localArrow.arrow);
+            localArrow = new Arrow(Color.blue);
+            if (localArrow.arrow != null) localArrow.arrow.SetActive(false);
         }
 
         public static Sprite getTransporterSampleSprite()

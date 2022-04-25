@@ -339,7 +339,7 @@ namespace TheOtherRoles
                 }
             );
 
-            // Transporter morph
+            // Transporter button
             transporterButton = new CustomButton(
                 () => {
                     if (Transporter.currentTarget != null)
@@ -357,7 +357,10 @@ namespace TheOtherRoles
                         RPCProcedure.TransporterSwap(Transporter.sampledTarget.PlayerId);
                         Transporter.sampledTarget = null;
                         transporterButton.Timer = Transporter.cooldown;
-                        SoundEffectsManager.play("morphlingMorph");                        
+                        SoundEffectsManager.play("morphlingMorph");
+                        if (Transporter.localArrow?.arrow != null) UnityEngine.Object.Destroy(Transporter.localArrow.arrow);
+                        Transporter.localArrow = new Arrow(Color.blue);
+                        if (Transporter.localArrow.arrow != null) Transporter.localArrow.arrow.SetActive(false);
                     }
                     
                 },

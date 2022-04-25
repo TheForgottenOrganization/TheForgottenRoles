@@ -516,6 +516,46 @@ namespace TheOtherRoles.Patches {
             }
         }
 
+        static void transporterArrowUpdate()
+        {
+ 
+            if (Transporter.localArrow?.arrow == null) return;
+
+            if (Transporter.transporter == null || PlayerControl.LocalPlayer != Transporter.transporter)
+            {
+                Transporter.localArrow.arrow.SetActive(false);
+                return;
+            }
+
+            if (Transporter.transporter != null && Transporter.sampledTarget != null && PlayerControl.LocalPlayer == Transporter.transporter && !Transporter.transporter.Data.IsDead)
+            {
+                Transporter.timeUntilUpdate -= Time.fixedDeltaTime;
+
+                if (Transporter.timeUntilUpdate <= 0f)
+                {
+                    bool trackedOnMap = !Transporter.sampledTarget.Data.IsDead;
+                    Vector3 position = Transporter.sampledTarget.transform.position;
+                    if (!trackedOnMap)
+                    { // Check for dead body
+                        DeadBody body = UnityEngine.Object.FindObjectsOfType<DeadBody>().FirstOrDefault(b => b.ParentId == Transporter.sampledTarget.PlayerId);
+                        if (body != null)
+                        {
+                            trackedOnMap = true;
+                            position = body.transform.position;
+                        }
+                    }
+
+                    Transporter.localArrow.Update(position);
+                    Transporter.localArrow.arrow.SetActive(trackedOnMap);
+                    Transporter.timeUntilUpdate = Transporter.arrowUpdateInterval;
+                }
+                else
+                {
+                    Transporter.localArrow.Update();
+                }
+            }
+        }
+
         static void undertakerDragBodyUpdate() {
             if (Undertaker.undertaker == null || Undertaker.undertaker.Data.IsDead ) return;
             if (Undertaker.deadBodyDraged != null ) {
@@ -688,14 +728,17 @@ namespace TheOtherRoles.Patches {
 
                 // Update Player Info
                 updatePlayerInfo();
-                updatePlayerInfoForBoutyHunter();
+                updatePlayerInfoForBoutyHunter();                
 
                 // Time Master
                 bendTimeUpdate();
                 // Morphling
                 morphlingSetTarget();
+                
                 // Transporter
                 transporterSetTarget();
+                transporterArrowUpdate();
+
                 // Medic
                 medicSetTarget();
                 // Shifter
@@ -742,7 +785,7 @@ namespace TheOtherRoles.Patches {
                 // Vulture
                 vultureUpdate();
                 // Medium
-                mediumSetTarget();
+                mediumSetTarget();                          
             } 
         }
     }
