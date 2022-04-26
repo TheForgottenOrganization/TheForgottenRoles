@@ -342,14 +342,8 @@ namespace TheOtherRoles
             // Transporter button
             transporterButton = new CustomButton(
                 () => {
-                    if (Transporter.currentTarget != null)
-                    {
-                        Transporter.sampledTarget = Transporter.currentTarget;
-                        transporterButton.Sprite = Transporter.getTransporterMorphSprite();
-                        transporterButton.Timer = Transporter.delaiAfterScan;
-                        SoundEffectsManager.play("morphlingSample");
-                    }
-                    else if (Transporter.sampledTarget != null)
+
+                    if (Transporter.sampledTarget != null)
                     {
                         MessageWriter writer = AmongUsClient.Instance.StartRpcImmediately(PlayerControl.LocalPlayer.NetId, (byte)CustomRPC.TransporterSwap, Hazel.SendOption.Reliable, -1);
                         writer.Write(Transporter.sampledTarget.PlayerId);
@@ -361,7 +355,16 @@ namespace TheOtherRoles
                         if (Transporter.localArrow?.arrow != null) UnityEngine.Object.Destroy(Transporter.localArrow.arrow);
                         Transporter.localArrow = new Arrow(Color.blue);
                         if (Transporter.localArrow.arrow != null) Transporter.localArrow.arrow.SetActive(false);
+                        transporterButton.Sprite = Transporter.getTransporterSampleSprite();
                     }
+                    else if (Transporter.currentTarget != null)
+                    {
+                        Transporter.sampledTarget = Transporter.currentTarget;
+                        transporterButton.Sprite = Transporter.getTransporterMorphSprite();
+                        transporterButton.Timer = Transporter.delaiAfterScan;
+                        SoundEffectsManager.play("morphlingSample");
+                    }
+                     
                     
                 },
                 () => { return Transporter.transporter != null && Transporter.transporter == PlayerControl.LocalPlayer && !PlayerControl.LocalPlayer.Data.IsDead; },
@@ -371,6 +374,9 @@ namespace TheOtherRoles
                     transporterButton.Sprite = Transporter.getTransporterSampleSprite();
                     transporterButton.killButtonManager.TimerText.color = Palette.EnabledColor;
                     Transporter.sampledTarget = null;
+                    if (Transporter.localArrow?.arrow != null) UnityEngine.Object.Destroy(Transporter.localArrow.arrow);
+                    Transporter.localArrow = new Arrow(Color.blue);
+                    if (Transporter.localArrow.arrow != null) Transporter.localArrow.arrow.SetActive(false);
                 },
                 Transporter.getTransporterSampleSprite(),
                  new Vector3(-1.3f, 1.3f, 0f),
