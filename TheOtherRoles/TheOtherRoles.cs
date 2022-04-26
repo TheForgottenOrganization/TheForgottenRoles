@@ -54,6 +54,7 @@ namespace TheOtherRoles
             SecurityGuard.clearAndReload();
             Arsonist.clearAndReload();
             Guesser.clearAndReload();
+            Transporter.clearAndReload();
             BountyHunter.clearAndReload();
             Logger.clearAndReload();
             Bait.clearAndReload();
@@ -1102,6 +1103,98 @@ namespace TheOtherRoles
             guesser = null;
             
             remainingShots = Mathf.RoundToInt(CustomOptionHolder.guesserNumberOfShots.getFloat());
+        }
+    }
+
+    public static class Transporter
+    {
+        public static PlayerControl transporter;
+        public static Color color = Palette.ImpostorRed;
+        private static Sprite sampleSprite;
+        private static Sprite morphSprite;
+
+        public static float cooldown = 15f;
+        public static float delaiAfterScan = 15f;
+
+        public static bool haveArrow = true;
+        public static float arrowUpdateInterval = 1f;
+        public static Arrow localArrow = new Arrow(Color.blue);        
+        public static float timeUntilUpdate = 0f;
+
+        public static PlayerControl currentTarget;
+        public static PlayerControl sampledTarget;
+
+        public static void TransportPlayers(PlayerControl TP2)
+        {
+            var TP1 = Transporter.transporter;            
+            var deadBodies = UnityEngine.Object.FindObjectsOfType<DeadBody>();
+            DeadBody Player1Body = null;
+            DeadBody Player2Body = null;
+            if (TP1.Data.IsDead)
+                foreach (var body in deadBodies)
+                    if (body.ParentId == TP1.PlayerId)
+                        Player1Body = body;
+            if (TP2.Data.IsDead)
+                foreach (var body in deadBodies)
+                    if (body.ParentId == TP2.PlayerId)
+                        Player2Body = body;
+
+            if (TP1.inVent && PlayerControl.LocalPlayer.PlayerId == TP1.PlayerId)
+            {
+                TP1.MyPhysics.ExitAllVents();
+            }
+            if (TP2.inVent && PlayerControl.LocalPlayer.PlayerId == TP2.PlayerId)
+            {
+                TP2.MyPhysics.ExitAllVents();
+            }
+
+            if (Player1Body == null && Player2Body == null)
+            {
+                TP1.MyPhysics.ResetMoveState();
+                TP2.MyPhysics.ResetMoveState();
+                var TempPosition = TP1.GetTruePosition();
+                var TempFacing = TP1.myRend.flipX;
+                TP1.NetTransform.SnapTo(new Vector2(TP2.GetTruePosition().x, TP2.GetTruePosition().y + 0.3636f));
+                TP1.myRend.flipX = TP2.myRend.flipX;
+                TP2.NetTransform.SnapTo(new Vector2(TempPosition.x, TempPosition.y + 0.3636f));
+                TP2.myRend.flipX = TempFacing;
+            }
+
+            TP1.moveable = true;
+            TP2.moveable = true;
+            TP1.Collider.enabled = true;
+            TP2.Collider.enabled = true;
+            TP1.NetTransform.enabled = true;
+            TP2.NetTransform.enabled = true;
+        }
+
+        public static void clearAndReload()
+        {
+            transporter = null;
+            currentTarget = null;
+            sampledTarget = null;
+            timeUntilUpdate = 0f;
+            cooldown = CustomOptionHolder.transporterScanCooldown.getFloat();
+            delaiAfterScan = CustomOptionHolder.transporterDelaiAfterScan.getFloat();
+            haveArrow = CustomOptionHolder.transporterAddArrow.getBool();
+            arrowUpdateInterval = CustomOptionHolder.transporterUpdateIntervall.getFloat();
+            if (localArrow?.arrow != null) UnityEngine.Object.Destroy(localArrow.arrow);
+            localArrow = new Arrow(Color.blue);
+            if (localArrow.arrow != null) localArrow.arrow.SetActive(false);
+        }
+
+        public static Sprite getTransporterSampleSprite()
+        {
+            if (sampleSprite) return sampleSprite;
+            sampleSprite = Helpers.loadSpriteFromResources("TheOtherRoles.Resources.SampleButton.png", 115f);
+            return sampleSprite;
+        }
+
+        public static Sprite getTransporterMorphSprite()
+        {
+            if (morphSprite) return morphSprite;
+            morphSprite = Helpers.loadSpriteFromResources("TheOtherRoles.Resources.TransporterButton.png", 115f);
+            return morphSprite;
         }
     }
 

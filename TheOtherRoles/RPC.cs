@@ -33,6 +33,7 @@ namespace TheOtherRoles
         Invisible,
         Camouflager,
         MrFreeze,
+        Transporter,
         Hacker,
         Mini,
         Tracker,
@@ -111,7 +112,8 @@ namespace TheOtherRoles
         PlaceLogTrap,
         GuesserShoot,
         GhostLordTurnIntoGhost,
-        VultureWin
+        VultureWin,
+        TransporterSwap
     }
 
     public static class RPCProcedure {
@@ -273,6 +275,9 @@ namespace TheOtherRoles
                     case RoleId.Medium:
                         Medium.medium = player;
                         break;
+                    case RoleId.Transporter:
+                        Transporter.transporter = player;
+                        break;
                     }
                 }
         }
@@ -366,7 +371,8 @@ namespace TheOtherRoles
 
         public static void timeMasterRewindTime() {
             TimeMaster.shieldActive = false; // Shield is no longer active when rewinding
-            if(TimeMaster.timeMaster != null && TimeMaster.timeMaster == PlayerControl.LocalPlayer) {
+            SoundEffectsManager.stop("timemasterShield");
+            if (TimeMaster.timeMaster != null && TimeMaster.timeMaster == PlayerControl.LocalPlayer) {
                 resetTimeMasterButton();
             }
             HudManager.Instance.FullScreen.color = new Color(0f, 0.5f, 0.8f, 0.3f);
@@ -513,6 +519,15 @@ namespace TheOtherRoles
             Morphling.morphTimer = Morphling.duration;
             Morphling.morphTarget = target;
         }
+
+        public static void TransporterSwap(byte playerId)
+        {
+            PlayerControl target = Helpers.playerById(playerId);
+            if (Transporter.transporter== null || target == null) return;            
+            Transporter.sampledTarget= target;
+            Transporter.TransportPlayers(target);
+        }
+        
 
         public static void invisibleInvis() {
             if (Invisible.invisible == null) return;
@@ -663,6 +678,7 @@ namespace TheOtherRoles
             if (player == Warlock.warlock) Warlock.clearAndReload();
             if (player == GhostLord.ghostLord) GhostLord.clearAndReload();
             if (player == MrFreeze.mrFreeze) MrFreeze.clearAndReload();
+            if (player == Transporter.transporter) Transporter.clearAndReload();
 
             // Other roles
             if (player == Jester.jester) Jester.clearAndReload();
@@ -913,6 +929,9 @@ namespace TheOtherRoles
                     break;
                 case (byte)CustomRPC.MorphlingMorph:
                     RPCProcedure.morphlingMorph(reader.ReadByte());
+                    break;
+                case (byte)CustomRPC.TransporterSwap:
+                    RPCProcedure.TransporterSwap(reader.ReadByte());
                     break;
                 case (byte)CustomRPC.InvisibleInvis:
                     RPCProcedure.invisibleInvis();

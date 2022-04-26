@@ -51,7 +51,9 @@ namespace TheOtherRoles.Patches {
                     BountyHunter.cooldownText.gameObject.SetActive(true);
                 }
             }
+            SoundEffectsManager.Load();
         }
+       
     }
 
     [HarmonyPatch]

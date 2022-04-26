@@ -37,6 +37,7 @@ namespace TheOtherRoles
         public static RoleInfo vampire = new RoleInfo("Vampire", Vampire.color, "Kill the Crewmates with your bites", "Bite your enemies", RoleId.Vampire);
         public static RoleInfo eraser = new RoleInfo("Eraser", Eraser.color, "Kill the Crewmates and erase their roles", "Erase the roles of your enemies", RoleId.Eraser);
         public static RoleInfo trickster = new RoleInfo("Trickster", Trickster.color, "Use your jack-in-the-boxes to surprise others", "Surprise your enemies", RoleId.Trickster);
+        public static RoleInfo transporter = new RoleInfo("Transporter", Transporter.color, "swap position to surprise others", "Teleport into a safe zone", RoleId.Transporter);
         public static RoleInfo cleaner = new RoleInfo("Cleaner", Cleaner.color, "Kill everyone and leave no traces", "Clean up dead bodies", RoleId.Cleaner);
         public static RoleInfo undertaker = new RoleInfo("Undertaker", Undertaker.color, "Kill everyone and leave no traces", "Drag up dead bodies to hide them", RoleId.Undertaker);
         public static RoleInfo warlock = new RoleInfo("Warlock", Warlock.color, "Curse other players and kill everyone", "Curse and kill everyone", RoleId.Warlock);
@@ -80,6 +81,7 @@ namespace TheOtherRoles
             vampire,
             eraser,
             trickster,
+            transporter,
             cleaner,
             warlock,
             bountyHunter,
@@ -162,6 +164,7 @@ namespace TheOtherRoles
             if (p == GhostLord.ghostLord) infos.Add(ghostLord);
             if (p == Vulture.vulture) infos.Add(vulture);
             if (p == Medium.medium) infos.Add(medium);
+            if (p == Transporter.transporter) infos.Add(transporter);
 
             // Default roles
             if (infos.Count == 0 && p.Data.IsImpostor) infos.Add(impostor); // Just Impostor
