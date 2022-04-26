@@ -31,7 +31,7 @@ Even more roles are coming soon :)
 | [Undertaker](#undertaker) | [Swapper](#swapper) |  |  |
 | [Ghost Lord](#ghost-lord) | [Time Master](#time-master) |  |  |
 | [Mr Freeze](#mr-freeze) |  [Tracker](#tracker) |  |  |
-|  |  [Logger](#logger) |  |  |
+| [Transporter](#transporter) | |  [Logger](#logger) |  |  |
 |  |  [Bait](#bait) |  |
 |  |  [Medium](#medium) |  |
 
@@ -109,6 +109,22 @@ The mod adds a few new feature to Among Us:
 - **Scan** Crewmates can use scanner at the same time (prevent scan abuse)
 
 # Roles
+
+## Transporter
+![transporter](./Images/roles/freezer.png)
+### **Team: Impostors**
+The Transporter is able to swap his position with someone else previously scanned.
+\
+**NOTE:**
+- Engineer and others imposteur are pusf outside the vent if they are inside a vent during a swap.
+- The swap don't cancel task or admin view.
+
+### Game Options
+| Name | Description |
+|----------|:-------------:|
+| Transporter Spawn Chance | -
+| Transporter Cooldown | -
+-----------------------
 
 ## Mr Freeze
 ![mr-freeze](./Images/roles/freezer.png)

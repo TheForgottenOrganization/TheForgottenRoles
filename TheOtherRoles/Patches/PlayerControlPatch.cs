@@ -519,7 +519,7 @@ namespace TheOtherRoles.Patches {
         static void transporterArrowUpdate()
         {
  
-            if (Transporter.localArrow?.arrow == null) return;
+            if (Transporter.localArrow?.arrow == null || !Transporter.haveArrow ) return;
 
             if (Transporter.transporter == null || PlayerControl.LocalPlayer != Transporter.transporter)
             {
