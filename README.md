@@ -31,9 +31,10 @@ Even more roles are coming soon :)
 | [Undertaker](#undertaker) | [Swapper](#swapper) |  |  |
 | [Ghost Lord](#ghost-lord) | [Time Master](#time-master) |  |  |
 | [Mr Freeze](#mr-freeze) |  [Tracker](#tracker) |  |  |
-| [Transporter](#transporter) | |  [Logger](#logger) |  |  |
-|  |  [Bait](#bait) |  |
-|  |  [Medium](#medium) |  |
+| [Transporter](#transporter) |  [Logger](#logger)  | |  |  |
+| Cloner |  [Bait](#bait) |  |
+| [Yo-Yo](#yoyo) |  [Medium](#medium) |  |
+| Bomber |  |  |
 
 The [Role Assignment](#role-assignment) sections explains how the roles are being distributed among the players.
 
@@ -45,6 +46,17 @@ The [Role Assignment](#role-assignment) sections explains how the roles are bein
 # Changelog
 <details>
   <summary>Click to show the Changelog</summary>
+
+  **Version 4.5.3**
+- Added a new role: Yo-Yo (Impostor) - Mark and blink to a position, then blink back to the start of the blink!
+- Added a new option to Jackal And Sidekick: Jackal / Sidekick can sabotage lights (cooldown syncs with Imp Sabotages)
+- Added a new option to the Tracker: Tracking Type: Arrow, Proximity Meter, Both
+- Added a new feature: The host is always displayed to all players, in the meeting ui and ping  tracker text
+- Added a new feature: Ghosts see the icons of all players on their map
+- Fixed the chat command to ban a player from the lobby `/ban`
+- Fixed an issue where killing in PropHunt crashed the lobby
+- Fixed an issue with the very short kill distance in Vanilla HideNSeek
+- Changed trapper trap: is now visible with transparency to the trapper while inactive
 
 **Version 2.8.1.3**  
 - Remove vent animation of trickster's JackInTheBox 
@@ -390,6 +402,31 @@ Depending on the options, there'll be an arrow pointing towards the current targ
 | Additional Cooldown After Killing Others | Time will be added to the normal impostor cooldown if the Bounty Hunter kills a not-bounty player
 | Show Arrow Pointing Towards The Bounty | If set to true an arrow will appear (only visiable for the Bounty Hunter)
 | Bounty Hunter Arrow Update Intervall | Sets how often the position is being updated
+-----------------------
+
+## YoYo
+### **Team: Impostors**
+The Yo-Yo is an Impostor who has the ability mark a position and later blink (teleport) to this position.\
+After the initial blink, the Yo-Yo has a fixed amount of time (option) to do whatever they want, before automatically blinking back to the starting point of the first blink.\
+Each blink leaves behind a silhouette with configurable transparency. The silhouette is very hard to see.\
+The Yo-Yo may also have access to a mobile admin table, depending on the settings.
+
+**NOTE:**
+
+- The marked position for the first jump's target is displayed to the Yo-Yo and ghosts only.
+- The silhouette of the first blink stays (almost) until the Yo-Yo returns
+- The silhouette of the second blink (return) stays for 5 seconds
+
+### Game Options
+| Name | Description |
+|----------|:-------------:|
+| Yo-Yo Spawn Chance | -
+| Blink Duration | -
+| Mark Location Cooldown | -
+| Marked Location Stays After Meeting | -
+| Has Admin Table | -
+| Admin Table Cooldown | -
+| Silhouette Visibility | -
 -----------------------
 
 ## Guesser
